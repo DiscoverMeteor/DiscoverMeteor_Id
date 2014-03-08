@@ -1,90 +1,89 @@
 ---
-title: Meteor Vocabulary
+title: Kosa Kata Meteor
 slug: meteor-vocabulary
 date: 0014/01/02
 number: 14.5
 sidebar: true
-contents: Review a few common Meteor terms. 
+contents: Meninjau kembali beberapa istilah umum Meteor. 
 paragraphs: 24
 ---
 
-////
+Dalam buku ini, Anda akan menemukan beberapa kata yang mungkin baru, atau setidaknya digunakan dalam cara yang berbeda dalam konteks Meteor. Kami akan menggunakan bab ini untuk mendefinisikan kata-kata tersebut.
 
-#### Client
-
-////
-
-#### Collection
-
-////
-
-#### Computation
-
-////
-
-#### Cursor
-
-////
- 
 #### DDP
 
-////
+DDP adalah protokol data terdistribusi (Distributed Data Protocol) Meteor, protokol yang digunakan untuk melakukan sinkronisasi koleksi dan melakukan pemanggilan Method. DDP didesain sebagai protokol yang generik, yang menggantikan fungsi HTTP untuk aplikasi realtime yang menggunakan banyak data.
 
 #### Deps
 
-////
+Deps adalah sistem reaktivitas Meteor. Deps digunakan di belakang layar untuk menjaga agar HTML tersinkronisasi secara otomatis dengan model data yang mendasarinya.
 
-#### Document
+#### Dokumen (Document)
 
-////
+Mongo adalah sebuah data-store yang berbasis dokumen, sehingga objek-objek yang muncul dari koleksi disebut "dokumen". Dokumen-dokumen ini merupakan objek JavaScript biasa (meski mereka tidak dapat mengandung fungsi) dengan sebuah properti spesial, `_id`, yang digunakan oleh Meteor untuk melacak properti-properti mereka melalui DDP.
 
 #### Helpers
 
-////
+Ketika sebuah template perlu me-render sesuatu yang lebih kompleks daripada sebuah properti dokumen, ia dapat memanggil sebuah helper, sebuah fungsi yang digunakan untuk membantu proses rendering.
 
-#### Latency Compensation
+#### Klien (Client)
 
-////
+Ketika kami berbicara tentang Klien, kami mengacu pada kode yang berjalan di *web browser* pengguna, baik pada browser tradisional seperti Firefox atau Safari, atau sesuatu sekompleks UIWebView pada aplikasi native iPhone.
+
+#### Koleksi (Collection)
+
+Sebuah Koleksi Meteor adalah data store yang secara otomatis melakukan sinkronisasi antara klien dan server. Koleksi memiliki nama (misalnya `posts`), dan biasanya ada baik di klien maupun server. Meski perilaku koleksi di klien dan server berbeda, mereka memiliki API yang sama berdasarkan API Mongo.
+
+#### Komputasi (Computation)
+
+Sebuah komputasi adalah sebuah blok kode yang berjalan setiap kali ada perubahan di salah satu sumber data reaktif yang diacunya. Jika Anda memiliki sumber data reaktif (misalnya, sebuah variabel Session) dan ingin merespon secara reaktif terhadap sumber data tersebut, Anda perlu mempersiapkan sebuah komputasi untuknya.
+
+#### Kursor (Cursor)
+
+Sebuah kursor adalah hasil dari menjalankan sebuah kueri di sebuah koleksi Mongo. Pada sisi klien, sebuah kursor bukanlah hanya sebuah larik berisi hasil, melainkan merupakan sebuah objek *reaktif* yang dapat diobservasi ketika ada penambahan, penghapusan atau pemutakhiran objek-objek di koleksi yang relevan.
+ 
+#### Kompensasi Latensi (Latency Compensation)
+
+Adalah sebuah teknik yang memungkinkan simulasi pemanggilan Method pada klien, untuk menghindari lag sewaktu menunggu respon dari server.
 
 #### Method
 
-////
+Method pada Meteor adalah sebuah pemanggilan prosedur remote dari klien ke server, dengan logika spesial untuk melacak perubahan koleksi dan memungkinkan Kompensasi Latensi.
 
 #### MiniMongo
 
-////
+Koleksi pada sisi klien merupakan data store in-memory yang menawarkan API seperti Mongo. Library yang mendukung perilaku ini disebut "MiniMongo", untuk mengindikasikan bahwa ia adalah sebuah versi yang lebih kecil dari Mongo yang berjalan sepenuhnya dalam memori.
 
 #### Package
 
-////
+Sebuah Meteor package dapat terdiri atas
+  1. Kode JavaScript untuk dijalankan di server.
+  2. Kode JavaScript untuk dijalankan di klien.
+  3. Instruksi pemrosesan resources (seperti SASS ke CSS).
+  4. Resources untuk diproses.
 
-  1. ////
-  2. ////
-  3. ////
-  4. ////
+Sebuah package adalah layaknya library bertenaga super. Meteor dilengkapi dengan seperangkat package inti yang ekstensif. Tersedia pula [Atmosphere](http://atmosphere.meteor.com), yang merupakan koleksi package pihak ketiga yang disediakan oleh komunitas.
 
-////
+#### Publikasi (Publication)
 
-#### Publication
-
-////
+Sebuah publikasi adalah sekumpulan data bernama yang disesuaikan untuk tiap pengguna yang terdaftar (subscribe) padanya. Anda mempersiapkan publikasi di server.
 
 #### Server
 
-////
+Server Meteor adalah sebuah HTTP dan DDP server yang dijalankan via node.js. Ia terdiri atas semua library Meteor dan juga kode server-side JavaScript Anda. Ketika Anda memulai server Meteor anda, ia akan membuat koneksi ke sebuah database Mongo It consists of the all the Meteor libraries as well your server-side JavaScript code. When you start your Meteor server, it connects to a Mongo database (yang dijalankannya sendiri dalam proses).
 
-#### Session
+#### Sesi (Session)
 
-////
+Sesi pada Meteor mengacu pada sebuah data source reaktif pada sisi klien yang digunakan oleh aplikasi Anda untuk melacak keadaan di mana pengguna berada. 
 
 #### Subscription
 
-////
+Sebuah subscription adalah koneksi ke sebuah publikasi untuk klien tertentu. Subscription merupakan kode yang berjalan di browser yang berbicara ke sebuah publikasi di server dan menjaga data tetap sinkron.
 
 #### Template
 
-////
+Sebuah template adalah sebuah metode untuk membangkitkan HTML di JavaScript. Secara default, Meteor mendukung Handlebars, sebuah sistem templating logic-less, meski ada rencana untuk mendukung lebih banyak sistem lainnya di masa yang akan datang.
 
 #### Template Data Context
 
-////
+Ketika sebuah template di-render, ia mengacu ke objek JavaScript yang menyediakan data spesifik untuk rendering tersebut. Umumnya objek-objek tersebut merupakan objek JavaScript sederhana (plain-old-JavaScript-objects, POJOs), seringkali merupakan dokumen-dokumen dari sebuah koleksi, meski mereka bisa juga lebih rumit dan memiliki fungsi-fungsi.
