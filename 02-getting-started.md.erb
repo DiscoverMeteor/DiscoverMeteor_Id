@@ -1,48 +1,48 @@
 ---
-title: Getting Started
+title: Memulai
 slug: getting-started
 date: 0002/01/01
 number: 2
-contents: Install Meteor & Meteorite.|Learn about the 5 types of Meteor packages.|Setup the file structure of your Meteor app.
+contents: Pasang Meteor & Meteorite.|Mempelajari tentang 5 tipe paket Meteor.|Menyusun struktur berkas untuk aplikasi Meteor Anda.
 paragraphs: 49
 ---
 
-////
+Kesan pertama sangat penting, dan proses instalasi Meteor seharusnya tidak menyakitkan Anda. Dari sebagian besar kasus yang sama, Anda seharusnya bisa memulai menggunakannya kurang dari lima menit.
 
-////
+Untuk memulai, kita bisa memasang Meteor dengan membuka terminal dan mengetik:
 
 ~~~bash
 $ curl https://install.meteor.com | sh
 ~~~
 
-////
+Perintah ini akan memasang aplikasi `meteor` ke dalam sistem Anda dan memastikan Anda siap untuk menggunakan Meteor.
 
 <% note do %>
 
-### *Not* Installing Meteor
+### *Tanpa* Memasang Meteor
 
-////
+Jika Anda tidak bisa (atau tidak ingin) memasang Meteor di lokal komputer Anda, kami menyarankan untuk melihat [Nitrous.io](http://nitrous.io).
 
-////
+Nitrous.io adalah layanan yang memungkinkan Anda untuk menjalankan aplikasi dan menyuntingnya langsung dari alat perambah Anda, dan kami telah menulis [panduan singkat](https://www.discovermeteor.com/blog/meteor-nitrous) untuk membantu Anda memulainya.
 
-////
+Anda bisa mengikuti panduan tersebut sampai (dan termasuk) sesi "instalasi Meteor & Meteorite', dan setelah itu kembali ikuti buku ini mulai dari sesi "Membuat Aplikasi Sederhana" di bab ini.
 
 <% end %>
  
 ### Meteorite
 
-////
+Mengingat fakta bahwa Meteor belum mendukung paket pihak ketika sepenuhnya, Tom Coleman (salah satu penulis buku ini) dan anggota komunitas sudah membuat [Meteorite](http://oortcloud.github.com/meteorite/), sebuah koleksi untuk meteor. Meteorite juga bertanggunajawab dalam proses memasang Meteor dan menghubungkannya dengan paket yang mungkin Anda temukan.
 
-////
+Karena kita akan bergantung pada paket pihak ketika untuk beberapa dari fitur Microscope, sebaiknya pasang Meteorite.
 
-### Installing Meteorite
+### Pemasangan Meteorite
 
-////
+Anda perlu memastikan bahwa Anda sudah punya node dan git di komputer Anda. Pasang kedua aplikasi tersebut seperti yang disarankan untuk Sistem Operasi Anda, atau coba pranala berikut:
  
-- [Node download site](http://nodejs.org/download/)
-- [Git download site](http://git-scm.com/downloads)
+- [Situs unduh Node](http://nodejs.org/download/)
+- [Situs unduh Git](http://git-scm.com/downloads)
 
-////
+Kedua, silahkan pasang Meteorite. Dikarenakan meteorite adalah aplikasi [npm](https://npmjs.org/) (Paket Modul Node, Standar format modul Node), kita akan memasangnya dengan:
 
 ~~~bash
 $ npm install -g meteorite
@@ -52,37 +52,37 @@ $ npm install -g meteorite
 
 ### Permission errors?
 
-////
+Di beberapa komputer, Anda mungkin membutuhkan izin root untuk memasang Meteorite. Untuk menghindari masalah seperti itu, pastikan Anda menggunakan `sudo -H`:
 
 ~~~bash
 $ sudo -H npm install -g meteorite
 ~~~
 
-////
+Anda bisa membaca lebih lanjut tentang masalah ini di [Dokumentasi Meteorite](https://github.com/oortcloud/meteorite/blob/master/README.md#permission-woes).
 
 <% end %>
 
-////
+Selesai! Meteorite akan menangani selebihnya dari sini.
 
-////
+Catatan: belum ada dukungan untuk Windows dari Meteorite untuk saat ini, tapi Anda bisa melihat-lihat [tutorial windows kami](https://www.discovermeteor.com/blog/using-meteor-and-atmopshere-on-windows/)
 
 <% note do %>
 
   ### `mrt` vs `meteor`
   
-////
+  Meteorite akan memasang aplikasi `mrt`, yang akan kita gunakan untuk memasang paket-paket ke dalam aplikasi kita. Tetapi, ketika kita ingin menjalankan server, kita masih tetap menggunakan aplikasi `meteor`.
   
 <% end %>
 
-### Creating a Simple App
+### Membuat Aplikasi Sederhana
 
-////
+Sekarang kita sudah memasang Meteorite, mari membuat sebuah aplikasi. Untuk membuatnya, kita akan menggunakan alat dari *command line* yaitu `mrt`:
 
 ~~~bash
 $ mrt create microscope
 ~~~
 
-////
+Perintah ini akan mengunduh Meteor, dan membuat sebuah projek dasar yang siap digunakan oleh Anda. Ketika itu selesai, Anda seharusnya melihat sebuah folder, `microscope/`, yang berisi berkas-berkas berikut:
 
 ~~~bash
 microscope.css  
@@ -91,99 +91,99 @@ microscope.js
 smart.json 
 ~~~
 
-////
+Aplikasi yang dibuat oleh Meteor untuk Anda adalah sebuah struktur aplikasi terdaur-ulang menunjukkan beberapa pola yang sederhana.
 
-////
+Walaupun aplikasi kita tidak melakukan banyak hal, kita masih tetap bisa menjalankannya. Untuk menjalankannya, kembali ke *terminal* dan ketik:
 
 ~~~bash
 $ cd microscope
 $ meteor
 ~~~
 
-////
+Sekarang arahkan alat perambah Anda ke `http://localhost:3000/` (atau sama dengan `http://0.0.0.0:3000/`) dan Anda seharunya melihat sesuatu seperti ini:
 
 <%= screenshot "2-1", "Meteor's Hello World." %>
 
-<%= commit "2-1", "Created basic microscope project." %>
+<%= commit "2-1", "Membuat project sederhana microscope." %>
 
-////
+Selamat! Anda telah berhasil menjalankan aplikasi Meteor pertama Anda. Ngomong-ngomong, untuk menghentikan aplikasi Anda, apa yang harus Anda lakukan adalah, kembali ke *terminal* dan tekan `ctrl+c`.
 
-### Adding a Package
+### Menambahkan Paket
 
-////
+Sekarang kita akan menggunakan Meteorite untuk menambahkan sebuah **smart packages** yang akan memungkinkan kita menambahkan [Bootstrap](http://getbootstrap.com/) ke dalam projek kita:
 
 ~~~bash
 $ mrt add bootstrap
 ~~~
 
-<%= commit "2-2", "Added bootstrap package." %>
+<%= commit "2-2", "Menambahkan paket bootstrap." %>
 
 <% note do %>
 
-### A Note on Packages
+### Sebuah Catatan di Paket
 
-////
+Ketika kita berbicara tentang paket di dalam kontek Meteor, sebaiknya harus spesifik. Meteor memiliki lima tipe paket sederhana:
 
-- ////
-- ////
-- ////
-- ////
-- ////
+- Meteor itu sendiri terpecah menjadi **core packages** yang berbeda. Mereka termasuk ke dalam setiap aplikasi Meteor, dan tidak ada yang perlu Anda khawatirkan soal ini.
+- **Smart packages** Meteor adalah kumpulan dari [kurang lebih 37 paket](http://docs.meteor.com/#packages) (Anda bisa mendapatkan daftar lengkapnya dengan mengetik `meteor list`) yang terbundel dengan Meteor dan bisa Anda *import* ke dalam aplikasi Anda. Anda tetap bisa menggunakannya walaupun Anda tidak menggunakan Meteorite, dengan `meteor add packagename`.
+- **Paket lokal** adalah paket opsional yang bisa anda buat sendiri dan menyimpannya di folder `/packages`. Anda juga tidak perlu Meteorite untuk menggunakannya.
+- **Atmosphere smart packages** adalah paket Meteor dari pihak ketiga yang terdaftar di [Atmosphere](http://atmosphere.meteor.com). Meteorite dibutuhkan untuk mengambil dan menghubungkan mereka ke aplikasi Anda.
+- **NPM packages** (*Node Packaged Modules*) adalah paket Node.js. Walaupun mereka tidak bekerja seperti Meteor, mereka tetap bisa digunakan oleh tipe-tipe paket sebelumnya.
 
 <% end %>
 
-### The File Structure of a Meteor App
+### Struktur Folder Aplikasi Meteor
 
-////
+Sebelum kita memulai menulis kode, kita harus membuat projek kita dengan benar. Untuk memastikan kita memiliki aplikasi yang bersih, buka `microscope` folder dan hapus `microscope.html`, `microscope.js`, dan `microscope.css`.
 
-////
+Selanjutnya, buat lima root folder di dalam `/microscope`: `/client`, `/server`, `/public`, `/lib`, and `/collections`, dan kita juga akan membuat berkas `main.html` dan `main.js` di dalam `/client`. Jangan khawatir jika hal ini akan merusak aplikasi untuk sekarang, kita akan mulai mengisi berkas-berkas ini di bab selanjutnya.
 
-////
+Kita harus ingat bahwa beberapa dari folder ini adalah spesial. Ketika kita sampai di berkas-berkas, Meteor memiliki beberapa peraturan:
 
-- ////
-- ////
-- ////
-- ////
-- ////
-- ////
+- Kode di folder `/server` hanya jalan di *server*.
+- Kode di folder `/client` hanya jalan di *client*.
+- Selebihnya jalan di *server* dan *client*.
+- Berkas-berkas di `/lib` akan di jalankan sebelum berkas-berkas lainnya.
+- Semua berkas `main.*` akan diambil sebelum yang lainnnya.
+- Berkas statik (*fonts*, gambar, dan lainnya) disimpan di folder `/public`.
 
-////
+Perlu dicatat bahwa walaupun Meteor memiliki semua peraturan ini, ini tidak melarang Anda untuk menggunakan struktur aplikasi yang berbeda jika Anda tidak menginginkannya. Jadi, struktur yang kami sarankan hanya merupakan cara bagaimana kami melakukannya, bukan peraturan baku.
 
-////
+Kami menyarankan Anda untuk melihat [dokumentasi resmi Meteor](http://docs.meteor.com/#structuringyourapp) jika Anda ingin lebih jelas tentan gini.
 
 <% note do %>
 
-### Is Meteor MVC?
+### Apakah Meteor Bersifat MVC?
 
-////
+Jika sebelum menggunakan Meteor Anda pernah menggunakan *framework* lain seperti Ruby on Rails, Anda mungkin bertanya apakah aplikasi Meteor mengadopsi pola MVC (*Model View Controller*).
 
-////
+Jawaban singkat adalah tidak. Tidak seperti Rails, Meteor tidak memaksakan struktur tetap untuk aplikasi Anda. Jadi dalam buku ini kita akan membuat bentuk struktur folder yang paling masuk akal menurut kita, tanpa khawatir terlalu banyak tentang akronim.
 
 <% end %>
 
-### No public?
+### Tidak ada public?
 
-////
+OK, kami becanda. Kita tidak benar-benar membutuhkan folder `public/` untuk alasan sederhananya Microscope tidak menggunakan berkas-berkas statik! Tetapi, karena kebanyakan aplikasi Meteor memasukan beberapa gambar, kami berfikir bahwa itu penting menambahkan folder itu juga.
 
-////
+Ngomong-ngomong, Anda mungkin juga menyadari adanya folder tersembunyi `.meteor`. Di sinilah Meteor menyimpan kode-kode mereka, dan menyunting sesuatu di dalam folder ini adalah ide yang buruk. Faktanya, Anda bahkan tidak perlu melihat apa isi folder ini sama sekali. Satu-satunya pengecualian untuk ini adalah folder `.meteor/packages` dan berkas `.meteor/release`, yang selalu bertanggungjawab mendaftar *smart packages* Anda dan versi Meteor yang akan digunakan. Ketika Anda menambahkan paket, dan mengganti versi Meteor, mungkin akan berguna jika melihat berkas-berkas ini.
 
 <% note do %>
 
-### Underscores vs CamelCase
+### *Underscores* vs *CamelCase*
 
-////
+Satu-satunya yang akan kami katakan tentang perdebatan sengit antara *underscore* (`my_variable`) vs *camelCase* (`myVariable`) adalah bahwa itu tidak jadi masalah yang manapun yang akan Anda ambil selama itu cocok untuk Anda.
 
-////
+Dalam buku ini, kita menggunakan *camelCase* karena itulah biasanya bagaimana javascript melakukan sesuatu (biar bagaimana, namanya JavaScript, dan bukan java_script!).
 
-////
+Satu-satunya pengecualian untuk ini adalah penamaan berkas, yang akan menggunakan *underscore* (`my_file.js`), dan *class* CSS, yang menggunakan *hyphens* (`.my-class`). Alasan untuk ini adalah karena pada umumnya *filesystem* menggunakan *underscore* lebih sering, dan *syntax* CSS sendiri sudah selalu menggunakan *hyphens* (`font-family`, `text-align`, dll.).
 
 <% end %>
 
-### Taking Care of CSS
+### Mengambil Alih CSS
 
-////
+Buku ini bukan tentang CSS. Jadi, untuk menghindari pelambatan Anda dengan detail *styling*, kami memutuskan untuk membuat semua *stylesheet* tersedia dari awal, sehingga Anda tidak perlu khawatir soal itu lagi selamanya.
 
-////
+CSS secara otomatis dimuat dan di *minified* oleh Meteor, jadi tidak seperti berkas statik lainnya, berkas css disimpan di `/client`, dan bukan di `/public`. Mulailah membuat folder `client/stylesheets/` sekarang, dan buat berkas `style.css` di dalamnya.
 
 ~~~css
 .grid-block, .main, .post, .comments li, .comment-form {
@@ -283,13 +283,13 @@ body {
 ~~~
 <%= caption "client/stylesheets/style.css" %>
 
-<%= commit "2-3","Re-arranged file structure." %>
+<%= commit "2-3","Atur ulang struktur berkas berkas." %>
 
 <% note do %>
 
-### A Note on CoffeeScript
+### Catatan Untuk Pengguna CoffeeScript
 
-////
+Di dalam buku ini, kami menuliskannya dengan bahasa JavaScript. Tapi, jika Anda lebih suka menggunakan CoffeeScript, Meteor sudah mempersiapkannya untuk Anda. Cukup tambahkan paket CoffeeScript dan Anda siap melanjutkannya.
 
 `mrt add coffeescript`
 

@@ -1,1 +1,1 @@
-This is an outline of [Discover Meteor](http://discovermeteor.com).
+Ini adalah versi bahasa Indonesia dari [Discover Meteor](http://discovermeteor.com).
