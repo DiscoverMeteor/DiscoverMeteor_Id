@@ -8,71 +8,71 @@ contents: Belajar cara menggunakan GitHub agar dapat mengikuti buku.
 paragraphs: 32
 ---
 
-////
+[GitHub](https://github.com/) merupakan repositori sosial untuk proyek-proyek *open-source* berbasis sistem kendali versi [Git](http://git-scm.com/), dan fungsi utamanya adalah mempermudah berbagi kode dan berkolaborasi dalam proyek. Disamping juga sebagai alat pembelajaran hebat. Dalam *sidebar* ini, kita akan meninjau beberapa cara penggunaan GitHub agar dapat mengikuti *Discover Meteor*.
 
-////
+*Sidebar* ini mengasumsikan Anda belum familiar dengan Git dan GitHub. Jika Anda sudah nyaman dengan keduanya, jangan ragu untuk melompat ke bab berikutnya!
 
 ### Melakukan *Commit*
 
-////
+Bagian kerja dasar dari repositori git adalah *commit*. Anda dapat menganggap *commit* sebagai gambaran status kode Anda pada kurun waktu tertentu.
 
-////
+Ketimbang memberikan Anda kode utuh untuk *Microscope*, kami memutuskan mengambil gambarannya secara langkah demi langkah, dan Anda dapat melihat semuanya online di GitHub.
 
-////
+Sebagai contoh, ini merupakan seperti apa [komit terakhir dari bab sebelumnya](https://github.com/DiscoverMeteor/Microscope/commit/chapter3-2) terlihat:
 
-<%= screenshot "s3-1", "*Git commit* seperti tampak pada GitHub." %>
+<%= screenshot "s3-1", "Git commit seperti tampak pada GitHub." %>
 
-////
+Apa yang Anda lihat disini adalah *"diff"* (perbedaan) berkas 'post_item.js', dengan kata lain perubahan yang diajukan *commit*. Dalam hal ini, kita membuat berkas 'post_item.js' dari awal, sehingga semua isinya disorot dengan warna hijau.
 
-////
+Mari bandingkan dengan contoh dari [halaman lanjut dari buku](https://github.com/DiscoverMeteor/Microscope/commit/chapter13-1):
 
 <%= screenshot "s3-2", "Memodifikasi kode." %>
 
-////
+Kali ini, hanya baris yang berubah yang disorot dengan warna hijau.
 
-////
+Dan tentu saja, adakalanya Anda tidak menambahkan atau memodifikasi kode, melainkan [menghapusnya](https://github.com/DiscoverMeteor/Microscope/commit/chapter12-2):
 
 <%= screenshot "s3-3", "Menghapus kode." %>
 
-////
+Jadi kita telah meninjau penggunaan pertama GitHub: melihat apa yang berubah dalam sekilas.
 
 ### Meramban kode hasil *commit*
 
-////
+Tinjauan *commit* Git menampilkan perubahan-perubahan yang ada, tapi kadangkala Anda ingin juga melihat berkas yang belum/tidak berubah, sekedar memastikan seperti apa kode tersebut terlihat pada tahap tertentu.
 
-////
+Sekali lagi GitHub hadir untuk kita. Ketika Anda berada pada halaman *commit*, klik tombol **Browse code**:
 
-<%= screenshot "s3-5", "Tombol ramban kode." %>
+<%= screenshot "s3-5", "Tombol Browse code." %>
 
-////
+Anda sekarang akan memiliki akses ke *repo*:
 
-<%= screenshot "s3-6", "*Repository commit* 3-2." %>
+<%= screenshot "s3-6", "Repository commit 3-2." %>
 
-////
+GitHub tidak memberi banyak petunjuk visual bahwa kita tengah melihat *commit*, tetapi Anda dapat membandingkan dengan tampilan master "normal" dan melihat sekilas bahwa struktur berkas berbeda:
 
-<%= screenshot "s3-7", "*Repository commit* 14-2." %>
+<%= screenshot "s3-7", "Repository commit 14-2." %>
 
 ### Mengakses *Commit* Secara Lokal
 
-////
+Kita baru saja melihat bagaimana menelusuri seluruh kode *commit* secara online di GitHub. Tetapi bagaimana jika Anda ingin melakukan hal serupa secara lokal? Sebagai contoh, Anda mungkin ingin menjalankan aplikasi secara lokal pada *commit* tertentu untuk melihat bagaimana kode tersebut berjalan.
 
-////
+Untuk melakukan ini, kita akan mengambil langkah pertama (dalam buku ini setidaknya) dengan utilitas baris perintah 'git'. Sebagai permulaan, [pastikan Git terinstal pada komputer Anda](http://git-scm.com/downloads). Kemudian **clone** repositori *Microscope* melalui perintah:
 
 ~~~bash
 $ git clone git@github.com:DiscoverMeteor/Microscope.git github_microscope
 ~~~
 
-////
+'github_microscope' pada akhir perintah diatas merupakan nama direktori lokal tempat dimana berkas kloning akan disimpan. Anda bisa menggantinya sesuai keinginan.
 
-////
+Mari 'cd' kedalam repositori agar kita dapat menggunakan utilitas baris perintah 'git':
 
 ~~~bash
 $ cd github_microscope
 ~~~
 
-////
+Sekarang ketika kita melakukan kloning repositori dari GitHub, kita mengunduh seluruh kode aplikasi, yang berarti kita tengah melihat kode terakhir yang pernah di-*commit*.
 
-////
+Untungnya, ada cara untuk kembali kemasa lampau dan *"check out" commit* tertentu tanpa mempengaruhi *commit* lainnya. Mari kita coba:
 
 ~~~bash
 $ git checkout chapter3-1
@@ -90,17 +90,17 @@ do so (now or later) by using -b with the checkout command again. Example:
 HEAD is now at a004b56... Added basic posts list template and static data.
 ~~~
 
-////
+Git memberitahukan kita bahwa kita berada dalam status "detached HEAD", yang berarti kita dapat mengamati *commit-commit* lampau tanpa bisa mengubahnya. Anda dapat menganggap ini seumpama penyihir mengamati masa lalu melalui bola kristal.
 
-////
+(Catat bahwa Git juga memiliki perintah yang memungkinkan Anda mengubah *commit-commit* lampau. Ini lebih seperti seorang "musafir waktu" kembali kemasa lalu, tapi itu diluar lingkup pengenalan singkat ini.)
 
-////
+Alasan mengapa Anda cukup hanya dengan mengetik 'chapter3-1' adalah bahwa kami telah membuat *pre-tagged* semua *commit Microscope* dengan penanda bab yang tepat. Jika ini tidak terjadi, Anda perlu terlebih dahulu mencari tahu **hash** atau identifikasi unik *commit*-nya.
 
-////
+Sekali lagi, GitHub membuat hidup kita lebih mudah. Anda dapat menemukan *hash commit* di sudut kanan bawah dari kotak header biru *commit*, seperti yang ditunjukkan disini:
 
-<%= screenshot "s3-4", "Menemukan *hash commit*." %>
+<%= screenshot "s3-4", "Menemukan hash commit." %>
 
-////
+Jadi mari kita coba dengan *hash* dan bukan *tag*:
 
 ~~~bash
 $ git checkout c7af59e425cd4e17c20cf99e51c8cd78f82c9932
@@ -108,32 +108,34 @@ Previous HEAD position was a004b56... Added basic posts list template and static
 HEAD is now at c7af59e... Augmented the postsList route to take a limit
 ~~~
 
-////
+Terus, bagaimana jika kita ingin berhenti melihat 'bola kristal ajaib' dan kembali ke masa kini? Kita beritahu Git bahwa kita ingin *check out branch* **Master**:
 
 ~~~bash
 $ git checkout master
 ~~~
 
+Catat bahwa Anda juga bisa menjalankan aplikasi melalui perintah *Meteor* disetiap tahap suatu proses, bahkan ketika dalam status "detached HEAD". Anda mungkin perlu menjalankan `mrt update` terlebih dulu jika *Meteor* mengeluh soal *packages* yang hilang, karena kode *packages* tidak termasuk dalam repo Git *Microscope*.
+
 ### Perspektif historis
 
-////
+Berikut skenario umum lainnya: Anda tengah melihat berkas dan mendapati beberapa perubahan yang tak pernah Anda lihat sebelumnya. Masalahnya adalah, Anda tidak dapat mengingat kapan berkas tersebut diubah. Anda hanya bisa menelusuri setiap *commit* satu per satu sampai Anda menemukannya, tapi ada cara lebih mudah berkat fitur **Historis** GitHub.
 
-////
+Pertama, akses salah satu berkas repositori Anda pada GitHub, kemudian temukan tombol "History":
 
-<%= screenshot "s3-8", "Tombol historis GitHub." %>
+<%= screenshot "s3-8", "Tombol history GitHub." %>
 
-////
+Kini Anda memiliki daftar semua *commits* berkaitan dengan suatu berkas:
 
 <%= screenshot "s3-9", "Menampilkan historis berkas." %>
 
-### *The Blame Game*
+### Permainan *Blame*
 
-////
+Untuk merangkum hal-hal, mari kita lihat **Blame**:
 
-<%= screenshot "s3-10", "Tombol GitHub *Blame*." %>
+<%= screenshot "s3-10", "Tombol GitHub Blame." %>
 
-////
+Tampilan ini menunjukkan kita baris demi baris siapa mengubah apa, dan pada *commit* mana (dengan kata lain, siapa yang harus disalahkan ketika sesuatu tak lagi bekerja sebagaimana mustinya):
 
-<%= screenshot "s3-11", "Tinjauan GitHub *Blame*." %>
+<%= screenshot "s3-11", "Tinjauan GitHub Blame." %>
 
-////
+Git merupakan alat yang cukup kompleks - dan demikian pula GitHub -, kita tidak bisa berharap untuk mencakup semuanya dalam satu bab. Kendati demikian, kita telah sedikit menyingkap permukaan dari kemampuan alat ini. Tapi mudah-mudahan, walau sedikit akan membantu Anda mengikuti sisa buku ini.
