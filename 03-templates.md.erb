@@ -1,17 +1,19 @@
 ---
-title: Templates
+title: Templat
 slug: templates
 date: 0003/01/01
 number: 3
-contents: Learn about Meteor's templating language, Handlebars.|Create your first three templates.|Learn how Meteor managers work.|Get a basic prototype working with static data.
+contents: Mempelajari Handlebars, bahasa templat Meteor.|Membuat tiga templat pertama.|Mempelajari bagaimana manajer Meteor bekerja.|Memahami kerja prototipe dasar dengan data statis.
 paragraphs: 46
 ---
 
-////
+Untuk memudahkan pengembangan menggunakan Meteor, kita akan mengadopsi pendekatan luar-dalam. Dengan kata lain kita akan membangun HTML/JavaScript dasar terlebih dahulu, baru kemudian mengaitkannya dalam app kita.
 
-////
+Artinya dalam bab ini kita hanya akan menyibukkan diri dengan apa yang terjadi dalam direktori `/client`.
 
-////
+Let's create a new file named `main.html` inside our `/client` directory, and fill it with the following code:
+
+Mari membuat berkas baru dengan nama `main.html` dalam direktori `/client`, dan mengisinya dengan kode berikut:
 
 ~~~html
 <head>
@@ -32,21 +34,21 @@ paragraphs: 46
 ~~~
 <%= caption "client/main.html" %>
 
-////
+Ini akan menjadi templat utama app kita. Seperti yang Anda lihat, semuanya HTML kecuali tag `{{> postsList}}`, yang merupakan sisipan untuk `postsList`, templat berikutnya. Mari kita buat beberapa templat lagi.
 
-### Meteor Templates
+### Templat Meteor
 
-////
+Pada intinya, situs berita sosial terdiri dari posting yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur templat kita.
 
-////
+Mari bikin direktori `/views` didalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita, dan untuk menjaga keringkasan kita juga akan membuat direktori `/post` didalam `/views` sekedar untuk templat-templat yg berkaitan dengan postingan.
 
 <% note do %>
 
-### Finding Files
+### Menemukan berkas
 
-////
+Meteor tu hebat dalam soal menemukan berkas. Dimanapun kamu letakkan kodemu selama masih dalam direktori `/client`, Meteor bakal menemukan dan menyusunnya dengan tepat. Ini berarti kamu tak perlu menulis path sertaan untuk berkas JavaScript atau CSS.
 
-////
+Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau bahkan semua kode dalam satu berkas. Namun karena Meteor akan menyusun segalanya menjadi satu berkas kecil, kita sebaiknya tetap menyusun berkas secara terstruktur.
 
 <% end %>
 
