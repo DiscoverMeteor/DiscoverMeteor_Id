@@ -52,7 +52,7 @@ Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau ba
 
 <% end %>
 
-////
+Kita akhirnya sudah siap untuk templat kedua. Buat `posts_list.html` didalam `client/views/posts`:
 
 ~~~html
 <template name="postsList">
@@ -65,7 +65,7 @@ Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau ba
 ~~~
 <%= caption "client/views/posts/posts_list.html" %>
 
-////
+Kemudian `post_item.html`:
 
 ~~~html
 <template name="postItem">
@@ -78,41 +78,42 @@ Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau ba
 ~~~
 <%= caption "client/views/posts/post_item.html" %>
 
-////
+Catat atribut `name="postsList"` templat. Ini merupakan nama yang akan digunakan Meteor merekam jejak templat mana kemana.
 
-////
+Saatnya memperkenalkan Spacebars, sistem penemplatan Meteor. Spacebars tu HTML juga, dengan tiga hal tambahan:  *partials*, *expressions* dan *block helpers*.
 
-////
+*Partials* menggunakan sintaks `{{> templateName}}` dan memberitahu Meteor agar menukar partials dengan templat senama (dalam kasus ini `postItem`).
 
-////
+*Expressions* seperti `{{title}}` antara memanggil properti obyek atau mengembalikan nilai templat helper seperti didefinisikan dalam manajer templat (pembahasan selanjutnya menyusul).
 
-////
+Finally, *block helpers* are special tags that control the flow of the template, such as `{{#each}}…{{/each}}` or `{{#if}}…{{/if}}`.
+Terakhir, *block helpers* adalah tag khusus yang mengontrol alur templat, seperti `{{#each}}…{{/each}}` atau `{{#if}}…{{/if}}`.
 
 <% note do %>
 
-### Going Further
+### Lebih Jauh
 
-////
+Kamu bisa merujuk ke [Spacebars documentation](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) jika kamu ingin belajar lebih soal Spacebars.
 
 <% end %>
 
-////
+Dibekali dengan pengetahuan ini, kita dengan mudah dapat mencerna apa yang tengah terjadi.
 
-////
+Pertama-tama, pada templat `postsList`, kita memilah obyek `posts` menggunakan helper blok `{{#each}}…{{/each}}`. Kemudian untuk tiap pilahan kita sertakan templat `postItem`.
 
-////
+Darimana datangnya obyek `posts`? Pertanyaan bagus. Ini sebenarnya helper templat dan kita akan menggunakannya saat melihat manajer templat.
 
-////
+Templat `postItem` sebenarnya punya fungsi jelas. Dengan hanya menggunakan tiga ekspresi: `{{url}}` dan `{{title}}` yang menghasilkan properti dokumen dan `{{domain}}` memanggil helper templat.
 
-////
+Kita telah menyinggung "helper templat" berulang kali melalui bab ini tanpa menjelaskan kerja sebenarnya. Untuk bisa mengetahuinya, mari bicara soal manajer dulu.
 
-### Template Managers
+### Manajer Templat
 
-////
+Kita sudah berurusan dengan Spacebars, yang tak lain HTML dengan sedikit taburan tag. Berbeda dengan bahasa-bahasa lain, sebut saja PHP (atau halaman HTML umumnya yang dapat menyertakan JavaScript), Meteor menjaga templat dan logik tetap terpisah.
 
-////
+Agar dapat bekerja, templat membutuhkan **manajer**. Kamu bisa menganggap manajer umpama juru masak yang meracik bumbu mentah (datamu) dan menyiapkannya, sebelum menyerahkan pada pelayan (templat) untuk disajikan padamu.
 
-////
+Dengan kata lain, sebab peran templat terbatas pada penyajian atau mengitari variabel-variabel, manajer menjadi satu-satunya yang melakukan pekerjaan berat menentukan nilai untuk tiap variabel.
 
 <% note do %>
 
