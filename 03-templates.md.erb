@@ -90,7 +90,7 @@ Terakhir, *block helpers* adalah tag khusus yang mengatur alur templat, seperti 
 
 ### Lebih Jauh
 
-Kamu bisa merujuk ke [Spacebars documentation](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) jika kamu ingin belajar lebih jauh soal Spacebars.
+Kamu bisa merujuk ke [dokumentasi Spacebars](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) jika kamu ingin belajar lebih jauh soal Spacebars.
 
 <% end %>
 
@@ -198,7 +198,7 @@ Kali ini nilai *helper* `domain` kita bukan array, melainkan sebuah fungsi anoni
 
 *helper* `domain` mengambil URL dan mengembalikan domainnya melalui sedikit sihir JavaScript. Tapi darimana url itu diambil?
 
-Untuk menjawab pertanyaan itu kita perlu kembali ke templat `posts_list.html`. *helper* blok `{{#each}}` bukan sekedar menampil berulang array, melainkan juga **menetapkan nilai `this` dalam blok untuk obyek yang ditampilkan**.
+Untuk menjawab pertanyaan itu kita perlu kembali ke templat `posts_list.html`. *Helper* blok `{{#each}}` bukan sekedar menampil berulang array, melainkan juga **menetapkan nilai `this` dalam blok untuk obyek yang ditampilkan**.
 
 Ini berarti antara tag `{{#each}}`, tiap postingan telah disisipkan ke dalam `this` secara berurutan dan menyebar dalam manajer templat (`post_item.js`) yang disertakan.
 
