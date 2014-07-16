@@ -7,13 +7,11 @@ contents: Mempelajari Handlebars, bahasa templat Meteor.|Membuat tiga templat pe
 paragraphs: 46
 ---
 
-Untuk memudahkan pengembangan menggunakan Meteor, kita akan mengadopsi pendekatan luar-dalam. Dengan kata lain kita akan membangun HTML/JavaScript dasar terlebih dahulu, baru kemudian mengaitkannya dalam app kita.
+Untuk memudahkan pengembangan menggunakan Meteor, kita akan mengadopsi pendekatan luar-dalam. Dengan kata lain kita akan membangun HTML/JavaScript dasar terlebih dahulu, baru kemudian mengaitkannya dalam aplikasi kita.
 
-Artinya dalam bab ini kita hanya akan menyibukkan diri dengan apa yang terjadi dalam direktori `/client`.
+Artinya dalam bab ini kita hanya akan memfokuskan diri dengan apa yang terjadi dalam direktori `/client`.
 
-Let's create a new file named `main.html` inside our `/client` directory, and fill it with the following code:
-
-Mari membuat berkas baru dengan nama `main.html` dalam direktori `/client`, dan mengisinya dengan kode berikut:
+Mari membuat berkas baru dengan nama `main.html` di dalam `/client`, dan mengisinya dengan kode berikut:
 
 ~~~html
 <head>
@@ -34,25 +32,25 @@ Mari membuat berkas baru dengan nama `main.html` dalam direktori `/client`, dan 
 ~~~
 <%= caption "client/main.html" %>
 
-Ini akan menjadi templat utama app kita. Seperti yang Anda lihat, semuanya HTML kecuali tag `{{> postsList}}`, yang merupakan sisipan untuk `postsList`, templat berikutnya. Mari kita buat beberapa templat lagi.
+Ini akan menjadi templat utama aplikasi kita. Seperti yang kamu lihat, semuanya HTML kecuali tag `{{> postsList}}`, yang merupakan sisipan untuk `postsList`, templat berikutnya. Mari kita buat beberapa templat lagi.
 
 ### Templat Meteor
 
 Pada intinya, situs berita sosial terdiri dari posting yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur templat kita.
 
-Mari bikin direktori `/views` didalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita, dan untuk menjaga keringkasan kita juga akan membuat direktori `/post` didalam `/views` sekedar untuk templat-templat yg berkaitan dengan postingan.
+Mari bikin direktori `/views` di dalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita dan untuk menjaga tetap ringkas, kita juga akan membuat direktori `/post` dalam `/views` sekedar untuk templat-templat yg berkaitan dengan postingan.
 
 <% note do %>
 
 ### Menemukan berkas
 
-Meteor tu hebat dalam soal menemukan berkas. Dimanapun kamu letakkan kodemu selama masih dalam direktori `/client`, Meteor bakal menemukan dan menyusunnya dengan tepat. Ini berarti kamu tak perlu menulis path sertaan untuk berkas JavaScript atau CSS.
+Meteor cukup hebat dalam soal menemukan berkas. Dimanapun kamu letakkan kodemu selama masih dalam direktori `/client`, Meteor akan menemukan dan menyusunnya dengan tepat. Artinya kamu tak perlu menulis path sertaan untuk berkas JavaScript atau CSS.
 
-Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau bahkan semua kode dalam satu berkas. Namun karena Meteor akan menyusun segalanya menjadi satu berkas kecil, kita sebaiknya tetap menyusun berkas secara terstruktur.
+Ini juga berarti kamu bisa meletakkan semua berkas dalam satu direktori, atau bahkan semua kode dalam satu berkas. Namun karena Meteor akan menyusun segalanya dalam satu berkas, ada baiknya kita tetap menyusun berkas secara terstruktur.
 
 <% end %>
 
-Akhirnya kita sudah siap untuk templat kedua. Buat `posts_list.html` didalam `client/views/posts`:
+Akhirnya kita sudah siap untuk templat kedua. Buat `posts_list.html` dalam `client/views/posts`:
 
 ~~~html
 <template name="postsList">
@@ -65,7 +63,7 @@ Akhirnya kita sudah siap untuk templat kedua. Buat `posts_list.html` didalam `cl
 ~~~
 <%= caption "client/views/posts/posts_list.html" %>
 
-Kemudian `post_item.html`:
+Selanjutnya `post_item.html`:
 
 ~~~html
 <template name="postItem">
@@ -78,56 +76,55 @@ Kemudian `post_item.html`:
 ~~~
 <%= caption "client/views/posts/post_item.html" %>
 
-Catat atribut `name="postsList"` templat. Ini merupakan nama yang akan digunakan Meteor merekam jejak templat mana kemana.
+Catat elemen atribut `name="postsList"` templat. Ini menjadi nama yang akan digunakan Meteor merekam jejak templat.
 
-Saatnya memperkenalkan Spacebars, sistem penemplatan Meteor. Spacebars tu HTML juga, dengan tiga hal tambahan:  *partials*, *expressions* dan *block helpers*.
+Saatnya memperkenalkan Spacebars, sistem penemplatan Meteor. Spacebars sejatinya HTML juga, dengan tiga tambahan:  *partials*, *expressions* dan *block helpers*.
 
-*Partials* menggunakan sintaks `{{> templateName}}` dan memberitahu Meteor agar menukar partials dengan templat senama (dalam kasus ini `postItem`).
+*Partials* menggunakan sintaks `{{> templateName}}` dan memberitahu Meteor agar menukar *partials* dengan templat senama (dalam kasus ini `postItem`).
 
-*Expressions* seperti `{{title}}` antara memanggil properti obyek atau mengembalikan nilai templat helper seperti didefinisikan dalam manajer templat (pembahasan selanjutnya menyusul).
+*Expressions* seperti `{{title}}` memanggil properti obyek atau mengembalikan nilai templat *helper* seperti didefinisikan dalam manajer templat (pembahasan selanjutnya menyusul).
 
-Finally, *block helpers* are special tags that control the flow of the template, such as `{{#each}}…{{/each}}` or `{{#if}}…{{/if}}`.
-Terakhir, *block helpers* adalah tag khusus yang mengontrol alur templat, seperti `{{#each}}…{{/each}}` atau `{{#if}}…{{/if}}`.
+Terakhir, *block helpers* adalah tag khusus yang mengatur alur templat, seperti `{{#each}}…{{/each}}` atau `{{#if}}…{{/if}}`.
 
 <% note do %>
 
 ### Lebih Jauh
 
-Kamu bisa merujuk ke [Spacebars documentation](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) jika kamu ingin belajar lebih soal Spacebars.
+Kamu bisa merujuk ke [Spacebars documentation](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) jika kamu ingin belajar lebih jauh soal Spacebars.
 
 <% end %>
 
-Dibekali dengan pengetahuan ini, kita dengan mudah dapat mencerna apa yang tengah terjadi.
+Dibekali dengan pengetahuan ini, kita dapat dengan mudah mencerna apa yang tengah terjadi.
 
-Pertama-tama, pada templat `postsList`, kita memilah obyek `posts` menggunakan helper blok `{{#each}}…{{/each}}`. Kemudian untuk tiap pilahan kita sertakan templat `postItem`.
+Pertama-tama, pada templat `postsList`, kita menampilkan ulang obyek `posts` menggunakan *helper* blok `{{#each}}…{{/each}}`. Kemudian untuk tiap tampilan kita sertakan templat `postItem`.
 
-Darimana datangnya obyek `posts`? Pertanyaan bagus. Ini sebenarnya helper templat dan kita akan menggunakannya saat melihat manajer templat.
+Darimana datangnya obyek `posts`? Pertanyaan bagus. Ini sebenarnya *helper* templat dan kita akan menggunakannya saat melihat manajer templat.
 
-Templat `postItem` sebenarnya punya fungsi jelas. Dengan hanya menggunakan tiga ekspresi: `{{url}}` dan `{{title}}` yang menghasilkan properti dokumen dan `{{domain}}` memanggil helper templat.
+Templat `postItem` sebenarnya punya fungsi jelas. Dengan hanya menggunakan tiga ekspresi: `{{url}}` dan `{{title}}` yang menghasilkan properti dokumen dan `{{domain}}` memanggil *helper* templat.
 
-Kita telah menyinggung "helper templat" berulang kali melalui bab ini tanpa menjelaskan kerja sebenarnya. Untuk bisa mengetahuinya, mari bicara soal manajer dulu.
+Kita telah menyinggung "*helper* templat" berulang kali melalui bab ini tanpa menjelaskan kerja sebenarnya. Untuk bisa mengetahuinya, mari bicara soal manajer dulu.
 
 ### Manajer Templat
 
-Kita sudah berurusan dengan Spacebars, yang tak lain HTML dengan sedikit taburan tag. Berbeda dengan bahasa-bahasa lain, sebut saja PHP (atau halaman HTML umumnya yang dapat menyertakan JavaScript), Meteor menjaga templat dan logik tetap terpisah.
+Kita sudah berurusan dengan Spacebars, yang tak lain HTML dengan sedikit taburan tag. Berbeda dengan bahasa-bahasa lain, misalnya PHP (atau halaman HTML umumnya yang dapat menyertakan JavaScript), Meteor menjaga templat dan logik secara terpisah.
 
-Agar dapat bekerja, templat membutuhkan **manajer**. Kamu bisa menganggap manajer umpama juru masak yang meracik bumbu mentah (datamu) dan menyiapkannya, sebelum menyerahkan pada pelayan (templat) untuk disajikan padamu.
+Agar dapat bekerja, templat membutuhkan **manajer**. Kamu bisa menganggap manajer seumpama juru masak yang meracik bumbu mentah (data) dan menyiapkannya, sebelum menyerahkan pada pelayan (templat) untuk disajikan.
 
-Dengan kata lain, sebab peran templat terbatas pada penyajian atau mengitari variabel-variabel, manajer menjadi satu-satunya yang melakukan pekerjaan berat menentukan nilai untuk tiap variabel.
+Dengan kata lain, oleh sebab peran templat terbatas pada penyajian atau menyusuri variabel-variabel, manajer menjadi satu-satunya yang melakukan pekerjaan berat menentukan nilai tiap variabel.
 
 <% note do %>
 
 ### Manajer?
 
-////
+Ketika kita tanyakan kepada para developer Meteor soal manajer templat, sebagian mengatakan "kontroler", dan sebagian lagi mengatakan "berkas-berkas tempat meletakkan kode JavaScript".
 
-////
+Manajer bukan kontroler yang sebenarnya (setidaknya, bukan dalam artian kontroler MVC) dan "TFWIPMJSC" juga bukan istilah menarik, maka kami menolak kedua hal itu.
 
-////
+Oleh sebab kita masih butuh cara mengidentifikasi apa yang kita bincangkan, kami datang dengan istilah "manajer" sebagai jalan pintas yang tak memiliki makna ambigu dalam *frameworks* web.
 
 <% end %>
 
-////
+Agar tetap ringkas, kita adopsi konvensi penamaan manajer setelah nama templat, dengan ekstensi **.js**. Jadi mari buat `posts_list.js` dalam `/client/views/posts` dan mulai membangun manajer pertama kita:
 
 ~~~js
 var postsData = [
@@ -153,17 +150,17 @@ Template.postsList.helpers({
 ~~~
 <%= caption "client/views/posts/posts_list.js" %>
 
-////
+Bila kamu melakukannya dengan benar, kamu harusnya melihat sesuatu serupa ini pada browser:
 
-<%= screenshot "3-1", "Our first templates with static data" %>
+<%= screenshot "3-1", "Templat pertama kita dengan data statis." %>
 
-<%= commit "3-1", "Added basic posts list template and static data." %>
+<%= commit "3-1", "Templat daftar postingan dasar dan data statis." %>
 
-////
+Kita melakukan dua hal disini. Pertama kita tata data prototipe dalam array `postsData`. Data tersebut wajarnya datang dari database, namun karena kita belum mempelajarinya (tunggu dibab berikut) kita "curangi" dulu dengan menggunakan data statis.
 
-////
+Kedua, kita menggunakan fungsi `Template.myTemplate.helpers()` Meteor untuk mendefinisi *helper* templat bernama `posts` yang mengembalikan array `postsData` kita.
 
-////
+Mendefinisi *helper* `posts` artinya templat kita sudah bisa menggunakan:
 
 ~~~html
 <template name="postsList">
@@ -176,11 +173,11 @@ Template.postsList.helpers({
 ~~~
 <%= caption "client/views/posts/posts_list.html" %>
 
-////
+Dengan ini templat mampu secara berulang menampilkan array `postsData` dan mengirim tiap obyek didalamnya ke templat `postItem`.
 
-### The Value of "this"
+### Nilai dari "this"
 
-////
+Sekarang kita akan membuat manajer `post_item.js`:
 
 ~~~js
 Template.postItem.helpers({
@@ -193,42 +190,42 @@ Template.postItem.helpers({
 ~~~
 <%= caption "client/views/posts/post_item.js" %>
 
-<%= commit "3-2", "Setup a `domain` helper on the `postItem`." %>
+<%= commit "3-2", "Siapkan *helper* `domain` pada `postItem`." %>
 
-////
+Kali ini nilai *helper* `domain` kita bukan array, melainkan sebuah fungsi anonim. Pola ini jauh lebih umum (dan lebih berguna) dibanding contoh data sebelumnya.
 
-<%= screenshot "3-2", "Displaying domains for each links." %>
+<%= screenshot "3-2", "Menampilkan domain untuk tiap link." %>
 
-////
+*helper* `domain` mengambil URL dan mengembalikan domainnya melalui sedikit sihir JavaScript. Tapi darimana url itu diambil?
 
-////
+Untuk menjawab pertanyaan itu kita perlu kembali ke templat `posts_list.html`. *helper* blok `{{#each}}` bukan sekedar menampil berulang array, melainkan juga **menetapkan nilai `this` dalam blok untuk obyek yang ditampilkan**.
 
-////
+Ini berarti antara tag `{{#each}}`, tiap postingan telah disisipkan ke dalam `this` secara berurutan dan menyebar dalam manajer templat (`post_item.js`) yang disertakan.
 
-////
+Sekarang kita mengerti mengapa `this.url` mengembalikan URL postingan saat ini. Bahkan bila kita gunakan `{{title}}` dan `{{url}}` dalam templat `post_item.html` kita, Meteor tau apa yang kita maksudkan dengan `this.title` and `this.url` dan mengembalikan nilai yang tepat.
 
 <% note do %>
 
-### JavaScript Magic
+### Sihir JavaScript
 
-////
+Kendati bukan khusus untuk Meteor, berikut penjelasan mengenai sihir JavaScript seperti disebutkan diatas. Pertama, kita membuat elemen HTML anchor kosong (`a`) dan menyimpannya dalam ingatan.
 
-////
+Kemudian kita tentukan atribut `href`-nya agar setara dengan URL postingan sekarang (seperti yang kita saksikan, dalam *helper* `this` merupakan obyek yang tengah beraksi).
 
-////
+Akhirnya kita bisa pungut element `a` dari properti `hostname` untuk mendapatkan link nama domainnya saja.
 
 <% end %>
 
-////
+Jika kamu menyimak dengan benar, kamu harusnya melihat daftar postingan pada browsermu. List tersebut merupakan data statis, belum menggunakan fitur real-time Meteor. Akan kami tunjukkan caranya nanti pada bab berikutnya!
 
 <% note do %>
 
-### Hot Code Reload
+### *Hot code reload*
 
-////
+Kamu mungkin memperhatikan bahwa kamu tak perlu me-*reload* browser secara manual ketika mengubah berkas.
 
-////
+Ini karena Meteor menelusuri seluruh berkas dalam direktori proyek dan secara otomatis me-*refresh* browser kapan saja modifikasi terdeteksi.
 
-////
+*Hot code reload* Meteor sebenarnya cukup cerdas, sekalipun antara dua *refresh*!
 
 <% end %>
