@@ -36,9 +36,9 @@ Ini akan menjadi templat utama aplikasi kita. Seperti yang kamu lihat, semuanya 
 
 ### Templat Meteor
 
-Pada intinya, situs berita sosial terdiri dari posting yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur templat kita.
+Pada intinya, situs berita sosial terdiri dari lansiran yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur templat kita.
 
-Mari bikin direktori `/views` di dalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita dan untuk menjaga tetap ringkas, kita juga akan membuat direktori `/post` dalam `/views` sekedar untuk templat-templat yg berkaitan dengan postingan.
+Mari bikin direktori `/views` di dalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita dan untuk menjaga tetap ringkas, kita juga akan membuat direktori `/post` dalam `/views` sekedar untuk templat-templat yg berkaitan dengan lansiran.
 
 <% note do %>
 
@@ -150,11 +150,11 @@ Template.postsList.helpers({
 ~~~
 <%= caption "client/views/posts/posts_list.js" %>
 
-Bila kamu melakukannya dengan benar, kamu harusnya melihat sesuatu serupa ini pada browser:
+Bila kamu melakukannya dengan benar, kamu harusnya melihat sesuatu serupa ini pada peramban:
 
 <%= screenshot "3-1", "Templat pertama kita dengan data statis." %>
 
-<%= commit "3-1", "Templat daftar postingan dasar dan data statis." %>
+<%= commit "3-1", "Templat daftar lansiran dasar dan data statis." %>
 
 Kita melakukan dua hal disini. Pertama kita tata data prototipe dalam array `postsData`. Data tersebut wajarnya datang dari database, namun karena kita belum mempelajarinya (tunggu dibab berikut) kita "curangi" dulu dengan menggunakan data statis.
 
@@ -200,9 +200,9 @@ Kali ini nilai *helper* `domain` kita bukan array, melainkan sebuah fungsi anoni
 
 Untuk menjawab pertanyaan itu kita perlu kembali ke templat `posts_list.html`. *Helper* blok `{{#each}}` bukan sekedar menampil berulang array, melainkan juga **menetapkan nilai `this` dalam blok untuk obyek yang ditampilkan**.
 
-Ini berarti antara tag `{{#each}}`, tiap postingan telah disisipkan ke dalam `this` secara berurutan dan menyebar dalam manajer templat (`post_item.js`) yang disertakan.
+Ini berarti antara tag `{{#each}}`, tiap lansiran telah disisipkan ke dalam `this` secara berurutan dan menyebar dalam manajer templat (`post_item.js`) yang disertakan.
 
-Sekarang kita mengerti mengapa `this.url` mengembalikan URL postingan saat ini. Bahkan bila kita gunakan `{{title}}` dan `{{url}}` dalam templat `post_item.html` kita, Meteor tau apa yang kita maksudkan dengan `this.title` and `this.url` dan mengembalikan nilai yang tepat.
+Sekarang kita mengerti mengapa `this.url` mengembalikan URL lansiran saat ini. Bahkan bila kita gunakan `{{title}}` dan `{{url}}` dalam templat `post_item.html` kita, Meteor tau apa yang kita maksudkan dengan `this.title` and `this.url` dan mengembalikan nilai yang tepat.
 
 <% note do %>
 
@@ -210,21 +210,21 @@ Sekarang kita mengerti mengapa `this.url` mengembalikan URL postingan saat ini. 
 
 Kendati bukan khusus untuk Meteor, berikut penjelasan mengenai sihir JavaScript seperti disebutkan diatas. Pertama, kita membuat elemen HTML anchor kosong (`a`) dan menyimpannya dalam ingatan.
 
-Kemudian kita tentukan atribut `href`-nya agar setara dengan URL postingan sekarang (seperti yang kita saksikan, dalam *helper* `this` merupakan obyek yang tengah beraksi).
+Kemudian kita tentukan atribut `href`-nya agar setara dengan URL lansiran saat ini (seperti yang kita saksikan, dalam *helper* `this` merupakan obyek yang tengah beraksi).
 
 Akhirnya kita bisa pungut element `a` dari properti `hostname` untuk mendapatkan link nama domainnya saja.
 
 <% end %>
 
-Jika kamu menyimak dengan benar, kamu harusnya melihat daftar postingan pada browsermu. List tersebut merupakan data statis, belum menggunakan fitur real-time Meteor. Akan kami tunjukkan caranya nanti pada bab berikutnya!
+Jika kamu menyimak dengan benar, kamu harusnya melihat daftar postingan pada perambanmu. List tersebut merupakan data statis, belum menggunakan fitur real-time Meteor. Akan kami tunjukkan caranya nanti pada bab berikutnya!
 
 <% note do %>
 
 ### *Hot code reload*
 
-Kamu mungkin memperhatikan bahwa kamu tak perlu me-*reload* browser secara manual ketika mengubah berkas.
+Kamu mungkin memperhatikan bahwa kamu tak perlu me-*reload* peramban secara manual ketika mengubah berkas.
 
-Ini karena Meteor menelusuri seluruh berkas dalam direktori proyek dan secara otomatis me-*refresh* browser kapan saja modifikasi terdeteksi.
+Ini karena Meteor menelusuri seluruh berkas dalam direktori proyek dan secara otomatis me-*refresh* peramban kapan saja modifikasi terdeteksi.
 
 *Hot code reload* Meteor sebenarnya cukup cerdas, sekalipun antara dua *refresh*!
 
