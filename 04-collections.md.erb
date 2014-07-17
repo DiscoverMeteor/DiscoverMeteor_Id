@@ -1,87 +1,88 @@
 ---
-title: Collections
+title: Koleksi
 slug: collections
 date: 0004/01/01
 number: 4
-contents: Learn about Meteor's core feature, realtime collections.|Understand how Meteor's data synchronization works.|Integrate collections with our templates.|Turn our basic prototype into a functioning realtime application!
+contents: Belajar mengenai fitur inti Meteor, koleksi realtime.|Mengerti bagaimana sinkronisasi data Meteor bekerja.|Mengintegrasi koleksi dengan templat.|Mengubah prototipe dasar menjadi aplikasi realtime yang fungsional!
 paragraphs: 72
 ---
 
-////
+Pada bab satu, kita berbicara soal fitur inti Meteor, sinkronisasi otomatis data antar klien dan server.
 
-////
+Pada bab ini, kita akan melihat lebih dekat bagaiamana itu bekerja dan mengamati operasi teknologi pendukungnya, Koleksi Meteor.
 
-////
+Kita sedang membangun aplikasi berita sosial, jadi hal pertama yang hendak kita lakukan adalah membuat daftar tautan yang dilansir. Kita akan menyebut masing-masingnya sebagai "lansiran."
 
-////
+Tentunya, kita perlu menyimpan lansiran ini disuatu tempat. Meteor hadir terbundel bersama database Mongo yang berjalan diatas server dan menjadi tempat penyimpan data *tetap*.
 
-////
+Jadi, kendati peramban pengguna berada pada suatu jenis keadaan (misalnya tengan berada pada halaman mana atau tengah mengetik komentar), server dan khususnya Mongo, menyimpan sumber data resmi yang tetap. *Resmi* disini artinya sama untuk semua pengguna: tiap pengguna bisa jadi berada pada halaman berbeda, namun daftar induk lansiran adalah sama untuk semua.
 
-////
+Data ini tersimpan di dalam **Koleksi** Meteor. Koleksi merupakan struktur data khusus, melalui penerbitan dan langganan, memelihara kerampakkan data waktu-nyata dari masing-masing peramban pengguna ke basis data Mongo dan sebaliknya. Mari lihat bagaimananya.
 
-////
+Kita ingin lansiran kita menjadi permanen dan terbagikan antar pengguna, jadi kita akan memulai dengan membuat koleksi disebut `Posts` sebagai wadah simpan. Buatlah direktori `collections/` pada direktori akar aplikasimu dan berkas `posts.js` di dalamnya. Kemudian tambahkan:
 
 ~~~js
 Posts = new Meteor.Collection('posts');
 ~~~
 <%= caption "collections/posts.js" %>
 
-<%= commit "4-1", "Added a posts collection" %>
+<%= commit "4-1", "Ditambahkan koleksi posts" %>
 
-////
+Kode di luar direktori `client/` dan `server/` akan berjalan pada dua konteks. Jadi koleksi `Posts` tersedia baik untuk klien maupun server. Bagaimanapun, apa yang koleksi lakukan untuk masing-masing lingkungan amat lah berbeda.
 
 <% note do %>
 
-### To Var Or Not To Var?
+### Var atau Bukan Var?
 
-////
+Dalam Meteor, kata-kunci `var` membatasi lingkup obyek hanya pada berkas saat ini. Sementara kita ingin membuat koleksi `Posts` tersedia untuk keseluruhan aplikasi, itu sebabnya mengapa kita tak menggunakan kata-kunci `var`.
 
 <% end %>
 
-////
+Pada server, koleksi memiliki tugas berkomunikasi kepada basis-data Mongo dan membaca dan menulis setiap perubahan. Sebanding dengan kerja pustaka basis-data umumnya. Pada klien, koleksi menjadi salinan *aman* data sesungguhnya.
 
 <% note do %>
 
-### Console vs Console vs Console
+### Konsol vs Konsol vs Konsol
 
-////
+In this chapter, we'll start making use of the **browser console**, which is not to be confused with the **terminal** or the **Mongo shell**. Here's a quick primer on each of them.
+Dalam bab ini kita akan mulai menggunakan **konsol peramban**, harap tidak menyalah artikannya dengan **terminal** atau **shell Mongo**. Berikut perbedaannya.
 
 #### Terminal
 
-<%= screenshot "terminal", "The Terminal" %>
+<%= screenshot "terminal", "Terminal" %>
 
-- ////
-- ////
-- ////
-- ////
+- Dijalankan dari sistem operasi.
+- **sisi-server** `console.log()` memanggil keluaran disini.
+- Prompt: `$`.
+- Juga dikenal sebagai: Shell, Bash
 
-#### Browser Console
+#### Konsol Peramban
 
-<%= screenshot "browser-console", "The Browser Console" %>
+<%= screenshot "browser-console", "Konsol peramban" %>
 
-- ////
-- ////
-- ////
-- ////
+- Dijalankan dari peramban, eksekusi kode JavaScript.
+- **Sisi klien** `console.log()` memanggil keluaran disini. 
+- Prompt: `❯`.
+- Juga dikenal sebagai: Konsol JavaScript, Konsol DevTools
 
-#### Mongo Shell
+#### Shell Mongo
 
-<%= screenshot "mongo-shell", "The Mongo Shell" %>
+<%= screenshot "mongo-shell", "Shell Mongo" %>
 
-- ////
-- ////
-- ////
-- ////
+- Dijalankan dari terminal dengan perintah `meteor mongo` atau `mrt mongo`.
+- Gives you direct access to your app's database. 
+- Prompt: `>`.
+- Juga dikenal sebagai: Konsol Mongo
 
-////
+Perlu dicatat, kamu tak seharusnya mengetikkan karakter-karakter prompt (`$`, `❯`, or `>`) sebagai bagian dari perintah. Dan setiap baris yang tak diawali dengan prompt merupakan keluaran dari perintah yang dieksekusi.
 
 <% end %>
 
-### Server-Side Collections
+### Koleksi Sisi-Server
 
-////
+Pada sisi-server, koleksi berperan sebagai API basis-data Mongo. Hal ini memungkinkan kamu menulis perintah Mongo seperti `Posts.insert()` atau `Posts.update()`, dan melakukan perubahan pada koleksi `posts` yang tersimpan di dalam Mongo.
 
-////
+Untuk melihat kedalam basis-data Mongo, buka lah jendela terminal kedua (sementara `meteor` masih berjalan dijendela pertama) dan kunjungi direktori aplikasi kamu. Kemudian, jalankan perintah `meteor mongo` untuk memulai shell Mongo, dimana kamu bisa mengetikkan perintah Mongo baku (dan seperti biasa, kamu bisa menghentikannya dengan tombol `ctrl+c` pada keyboard). Sebagai contoh, mari masukkan lansir baru:
 
 ~~~bash
 > db.posts.insert({title: "A new post"});
@@ -89,43 +90,43 @@ Posts = new Meteor.Collection('posts');
 > db.posts.find();
 { "_id": ObjectId(".."), "title" : "A new post"};
 ~~~
-<%= caption "The Mongo Shell" %>
+<%= caption "Shell Mongo" %>
 
 <% note do %>
 
-### Mongo on Meteor.com
+### Mongo pada Meteor.com
 
-////
+Perlu dicatat bahwa ketika menyimpan (hosting) aplikasi kamu di *.meteor.com, kamu juga bisa mengakses shell Mongo dengan `meteor mongo myApp`.
 
-////
+Dan ketika kita berada di situ, kamu juga bisa mendapatkan log aplikasi dengan perintah `meteor logs myApp`.
 
 <% end %>
 
-////
+Sintaks Mongo itu familiar karena menggunakan antarmuka JavaScript. Kita tak akan melakukan manipulasi data lebih lanjut di dalam shell Mongo, kendati boleh juga sesekali mengamatinya sekedar memastikan apa yang ada di dalam.
 
-### Client-Side Collections
+### Koleksi Sisi-Klien
 
-////
+Koleksi mendapatkan sisi-klien yang lebih menarik. Ketika kamu menyatakan `Posts = new Meteor.Collection('posts');` pada klien, apa yang tengah kamu buat adalah _local, cache_ bawaan peramban koleksi Mongo.
 
-////
+Penting untuk mengetahui hal ini mengingat sangat mendasar bagi cara kerja Meteor. Secara umum, koleksi sisi-klien terdiri dari bagian-bagian dokumen yang tersimpan di dalam koleksi Mongo (lagi pula, kita biasanya tak ingin mengirim keseluruhan isi basis-data kepada klien).
 
-////
+Kedua, dokumen-dokumen tersebut tersimpan *dalam memori peramban*, yang berarti mengaksesnya akan menjadi lebih cepat. Jadi tak ada lalu lintas lambat menuju server atau basis-data guna mengambil data ketika memanggil `Posts.find()` pada klien, karena data telah dimuat.
 
 <% note do %>
 
-### Introducing MiniMongo
+### Memperkenalkan MiniMongo
 
-////
+Pelaksanaan Mongo sisi-klien pada Meteor disebut MiniMongo. Pelaksanaan ini belum lah sempurna dan sesekali kamu akan menjumpai fitur-fitur Mongo yang tak bekerja pada MiniMongo. Kendati demikian, keseluruhan fitur yang kita cakup dalam buku ini bekerja persis sama untuk keduanya (Mongo dan MiniMongo).
 
 <% end %>
 
-### Client-Server Communication
+### Komunikasi Klien-Server
 
-////
+Kunci dari semua ini adalah bagaimana koleksi sisi-klien dan koleksi sisi-server dengan nama yang sama (dalam hal ini `'posts'`) bisa menyerempakkan datanya.
 
-////
+Ketimbang menjelaskan hal ini secara detil, lebih baik kita saksikan saja apa yang terjadi.
 
-////
+Mari mulai dengan membuka dua jendela peramban dan mengakses konsolnya masing-masing. Kemudian, buka shell Mongo dengan baris perintah. Pada tahap ini, kita seharusnya dapat melihat dokumen yang kita buat sebelumnya.
 
 ~~~bash
 > db.posts.find();
