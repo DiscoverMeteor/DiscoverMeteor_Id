@@ -40,13 +40,17 @@ Meteor mungkin merupakan *framework* ideal untuk kebutuhan Anda, tapi mungkin ju
 
 ### Mengapa Buku Ini?
 
-Selama 6 bulan terakhir, kami membuat [Telescope](http://telesc.pe), sebuah aplikasi Meteor *open-source* yang memungkinkan siapa saja membuat situs berita sosial mereka sendiri (seperti layaknya [Reddit](http://reddit.com) atau [Hacker news](http://news.ycombinator.com)), di mana orang dapat mengirimkan berbagi *link* dan kemudian melakukan *voting* atas *link-link* tersebut.
+Selama 2 tahun terakhir, kami telah mengerjakan beberapa proyek Meteor, yang mencakup dari aplikasi web sampai ke mobile, dan dari proyek komersil sampai ke open-source.
 
 Kami belajar banyak sewaktu membuat aplikasi tersebut, tetapi tidak selalu mudah menemukan jawaban atas pertanyaan-pertanyaan yang kami temui. Kami harus menggabungkan berbagai kepingan dari banyak sumber yang berbeda, dan dalam beberapa kasus bahkan menciptakan solusi sendiri. Dengan buku ini, kami ingin membagi pengalaman-pengalaman kami tersebut, dan membuat sebuah panduan langkah-demi-langkah yang akan memandu Anda membuat sebuah aplikasi Meteor yang lengkap dari nol. 
 
-Aplikasi yang akan kita buat merupakan versi sedikit lebih sederhana dari Telescope, yang akan kita panggil Microscope. Sewaktu membangunnya, kita akan membahas berbagai elemen yang berbeda yang berkaitan dengan pengembangan aplikasi Meteor, seperti akun pengguna, koleksi Meteor, *routing*, dan lain sebagainya. 
+Aplikasi yang akan kita buat merupakan versi serderhana dari website berita sosial seperti [Hacker News](http://news.ycombinator.com) atau [Reddit](http://reddit.com), yang akan kita panggil Microscope (dengan menganalogikan dari aplikasi Meteor open-source [Telescope](http://telesc.pe)). Sewaktu membangunnya, kita akan membahas berbagai elemen yang berbeda yang berkaitan dengan pengembangan aplikasi Meteor, seperti akun pengguna, Meteor *collections*, *routing*, dan lain sebagainya. 
 
-Dan ketika Anda selesai membaca buku ini, jika Anda ingin tahu lebih lanjut, Anda akan dapat dengan mudah memahami kode Telescope, karena mengikuti pola yang sama. 
+### Untuk Siapa Buku Ini?
+
+Salah satu target kami ketika menulis buku ini yaitu membuatnya mudah dipahami. Jadi, kamu bisa mengikuti materi buku ini walaupun kamu tidak memiliki pengalaman dengan Meteor, Node.js, framework MVC, atau bahkan koding/pemrograman server side pada umumnya.
+
+Di sisi lain, kami mengganggap pembaca sudah familiar dengan sintaks dan konsep dasar Javascript. Tapi kalau kamu pernah mencoba jQuery atau mengutak atil dengan konsole developer pada browser, kamu seharusnya sudah bisa mengikuti (OK).
 
 ### Tentang Pengarang
 
@@ -54,7 +58,7 @@ Seandainya Anda bertanya-tanya tentang siapa kami dan mengapa Anda bisa memperca
 
 <%= image "tom-photo.jpg", "portrait" %>
 
-**Tom Coleman** adalah bagian dari [Percolate Studio](http://percolatestudio.com/), sebuah perusahaan web *development* dengan fokus pada kualitas dan *user experience*. Ia juga merupakan *co-creator* dari [Meteorite](https://github.com/oortcloud/meteorite) dan *package repository* [Atmosphere](http://atmosphere.meteor.com), dan juga berada di balik banyak proyek *open-source* Meteor lainnya (seperti misalnya [Router](https://github.com/tmeasday/meteor-router)).
+**Tom Coleman** adalah bagian dari [Percolate Studio](http://percolatestudio.com/), sebuah perusahaan web *development* dengan fokus pada kualitas dan *user experience*. Dia salah satu pengelola dari *package repository* [Atmosphere](http://atmosphere.meteor.com), dan juga berada di balik banyak proyek *open-source* Meteor lainnya (seperti misalnya [Iron Router](https://github.com/EventedMind/iron-router)).
 
 <%= image "sacha-photo.jpg", "portrait" %>
 
@@ -74,7 +78,7 @@ Jadi, apabila Anda masih pemula, silakan abaikan bab-bab *sidebar* ketika Anda m
 
 Tak ada hal yang lebih buruk dibandingkan mengikuti langkah-langkah di sebuah buku pemrograman dan tiba-tiba menyadari bahwa kode Anda tidak sinkron lagi dengan contoh yang diberikan dan semua tidak bekerja sesuai yang seharusnya. 
 
-Untuk mencegah hal ini, kami telah menyiapkan [sebuah repository GitHub untuk Microscope](https://github.com/SachaG/Microscope), dan akan menyediakan *direct link* ke git *commits* setiap beberapa perubahan kode. Lebih lanjut, tiap *commit* juga terhubung ke sebuah *live instance* dari aplikasi pada *commit* tersebut, sehingga Anda dapat membandingkannya dengan *local copy* Anda. Berikut ini adalah contoh bagaimana hal itu akan ditampilkan:
+Untuk mencegah hal ini, kami telah menyiapkan [sebuah repository GitHub untuk Microscope](https://github.com/DiscoverMeteor/Microscope), dan akan menyediakan *direct link* ke git *commits* setiap beberapa perubahan kode. Lebih lanjut, tiap *commit* juga terhubung ke sebuah *live instance* dari aplikasi pada *commit* tersebut, sehingga Anda dapat membandingkannya dengan *local copy* Anda. Berikut ini adalah contoh bagaimana hal itu akan ditampilkan:
 
 <%= commit "11-2", "Tampilkan notifikasi di header." %>
 
