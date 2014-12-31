@@ -3,7 +3,10 @@ title: Memulai
 slug: getting-started
 date: 0002/01/01
 number: 2
-contents: Pasang Meteor & Meteorite.|Mempelajari tentang 5 tipe paket Meteor.|Menyusun struktur berkas untuk aplikasi Meteor Anda.
+points: 1
+photoUrl: http://www.flickr.com/photos/ikewinski/9511230392/
+photoAuthor: Mike Lewinski
+contents: Pasang Meteor.|Mempelajari tentang 5 tipe paket Meteor.|Menyusun struktur berkas untuk aplikasi Meteor Anda.
 paragraphs: 49
 ---
 
@@ -12,7 +15,7 @@ Kesan pertama sangat penting, dan proses instalasi Meteor seharusnya tidak menya
 Untuk memulai, kita bisa memasang Meteor dengan membuka terminal dan mengetik:
 
 ~~~bash
-$ curl https://install.meteor.com | sh
+curl https://install.meteor.com | sh
 ~~~
 
 Perintah ini akan memasang aplikasi `meteor` ke dalam sistem Anda dan memastikan Anda siap untuk menggunakan Meteor.
@@ -23,137 +26,129 @@ Perintah ini akan memasang aplikasi `meteor` ke dalam sistem Anda dan memastikan
 
 Jika Anda tidak bisa (atau tidak ingin) memasang Meteor di lokal komputer Anda, kami menyarankan untuk melihat [Nitrous.io](http://nitrous.io).
 
-Nitrous.io adalah layanan yang memungkinkan Anda untuk menjalankan aplikasi dan menyuntingnya langsung dari alat perambah Anda, dan kami telah menulis [panduan singkat](https://www.discovermeteor.com/blog/meteor-nitrous) untuk membantu Anda memulainya.
+Nitrous.io adalah layanan yang memungkinkan Anda untuk menjalankan aplikasi dan menyuntingnya langsung dari *browser* Anda, dan kami telah menulis [panduan singkat](https://www.discovermeteor.com/blog/meteor-nitrous) untuk membantu Anda memulainya.
 
-Anda bisa mengikuti panduan tersebut sampai (dan termasuk) sesi "instalasi Meteor & Meteorite', dan setelah itu kembali ikuti buku ini mulai dari sesi "Membuat Aplikasi Sederhana" di bab ini.
+Anda bisa mengikuti panduan tersebut sampai (dan termasuk) sesi "instalasi Meteor', dan setelah itu kembali ikuti buku ini mulai dari sesi "Membuat Aplikasi Sederhana" di bab ini.
 
-<% end %>
- 
-### Meteorite
-
-Mengingat fakta bahwa Meteor belum mendukung paket pihak ketika sepenuhnya, Tom Coleman (salah satu penulis buku ini) dan anggota komunitas sudah membuat [Meteorite](http://oortcloud.github.com/meteorite/), sebuah koleksi untuk meteor. Meteorite juga bertanggunajawab dalam proses memasang Meteor dan menghubungkannya dengan paket yang mungkin Anda temukan.
-
-Karena kita akan bergantung pada paket pihak ketika untuk beberapa dari fitur Microscope, sebaiknya pasang Meteorite.
-
-### Pemasangan Meteorite
-
-Anda perlu memastikan bahwa Anda sudah punya node dan git di komputer Anda. Pasang kedua aplikasi tersebut seperti yang disarankan untuk Sistem Operasi Anda, atau coba pranala berikut:
- 
-- [Situs unduh Node](http://nodejs.org/download/)
-- [Situs unduh Git](http://git-scm.com/downloads)
-
-Kedua, silahkan pasang Meteorite. Dikarenakan meteorite adalah aplikasi [npm](https://npmjs.org/) (Paket Modul Node, Standar format modul Node), kita akan memasangnya dengan:
-
-~~~bash
-$ npm install -g meteorite
-~~~
-
-<% note do %>
-
-### Permission errors?
-
-Di beberapa komputer, Anda mungkin membutuhkan izin root untuk memasang Meteorite. Untuk menghindari masalah seperti itu, pastikan Anda menggunakan `sudo -H`:
-
-~~~bash
-$ sudo -H npm install -g meteorite
-~~~
-
-Anda bisa membaca lebih lanjut tentang masalah ini di [Dokumentasi Meteorite](https://github.com/oortcloud/meteorite/blob/master/README.md#permission-woes).
-
-<% end %>
-
-Selesai! Meteorite akan menangani selebihnya dari sini.
-
-Catatan: belum ada dukungan untuk Windows dari Meteorite untuk saat ini, tapi Anda bisa melihat-lihat [tutorial windows kami](https://www.discovermeteor.com/blog/using-meteor-and-atmopshere-on-windows/)
-
-<% note do %>
-
-  ### `mrt` vs `meteor`
-  
-  Meteorite akan memasang aplikasi `mrt`, yang akan kita gunakan untuk memasang paket-paket ke dalam aplikasi kita. Tetapi, ketika kita ingin menjalankan server, kita masih tetap menggunakan aplikasi `meteor`.
-  
 <% end %>
 
 ### Membuat Aplikasi Sederhana
 
-Sekarang kita sudah memasang Meteorite, mari membuat sebuah aplikasi. Untuk membuatnya, kita akan menggunakan alat dari *command line* yaitu `mrt`:
+Dengan Meteor sudah terpasang, mari kira buat sebuah aplikasi. Untuk melakukannya, kita menggunakan kata perintah dari Meteor yaitu `meteor`:
 
 ~~~bash
-$ mrt create microscope
+meteor create microscope
 ~~~
 
-Perintah ini akan mengunduh Meteor, dan membuat sebuah projek dasar yang siap digunakan oleh Anda. Ketika itu selesai, Anda seharusnya melihat sebuah folder, `microscope/`, yang berisi berkas-berkas berikut:
+Perintah ini akan mengunduh dan memasang standar meteor, yang siap digunakan untuk proyek Meteor anda. Ketika pemasangan sudah selesai, Anda akan melihat direktori, `microscope/`, yang isinya sebagai berikut:
 
 ~~~bash
-microscope.css  
-microscope.html 
-microscope.js   
-smart.json 
+.meteor
+microscope.css
+microscope.html
+microscope.js
 ~~~
 
-Aplikasi yang dibuat oleh Meteor untuk Anda adalah sebuah struktur aplikasi terdaur-ulang menunjukkan beberapa pola yang sederhana.
+Aplikasi yang Meteor telah pasang untuk Anda ini adalah aplikasi *boilerplate* sederhana yang mendemonstrasikan beberapa pola sederhana.
 
-Walaupun aplikasi kita tidak melakukan banyak hal, kita masih tetap bisa menjalankannya. Untuk menjalankannya, kembali ke *terminal* dan ketik:
+Walau sederhana, kita bisa menjalankannya. Untuk menjalankannya, kembali ke terminal Anda dan ketik:
 
 ~~~bash
-$ cd microscope
-$ meteor
+cd microscope
+meteor
 ~~~
 
-Sekarang arahkan alat perambah Anda ke `http://localhost:3000/` (atau sama dengan `http://0.0.0.0:3000/`) dan Anda seharunya melihat sesuatu seperti ini:
+Lalu arahkan browser Anda ke `http://localhost:3000/` (atau bisa juga `http://0.0.0.0:3000/`) dan Anda seharusnya melihat seperti ini:
 
 <%= screenshot "2-1", "Meteor's Hello World." %>
 
-<%= commit "2-1", "Membuat project sederhana microscope." %>
+<%= commit "2-1", "Created basic microscope project." %>
 
 Selamat! Anda telah berhasil menjalankan aplikasi Meteor pertama Anda. Ngomong-ngomong, untuk menghentikan aplikasi Anda, apa yang harus Anda lakukan adalah, kembali ke *terminal* dan tekan `ctrl+c`.
 
-### Menambahkan Paket
-
-Sekarang kita akan menggunakan Meteorite untuk menambahkan sebuah **smart packages** yang akan memungkinkan kita menambahkan [Bootstrap](http://getbootstrap.com/) ke dalam projek kita:
-
-~~~bash
-$ mrt add bootstrap
-~~~
-
-<%= commit "2-2", "Menambahkan paket bootstrap." %>
+Dan juga jika Anda menggunakan Git, ini saat waktu yang tepat untuk initialisasi repo anda dengan `git init`.
 
 <% note do %>
 
-### Sebuah Catatan di Paket
+### Selamat Tinggal Meteorite
 
-Ketika kita berbicara tentang paket di dalam kontek Meteor, sebaiknya harus spesifik. Meteor memiliki lima tipe paket sederhana:
+Ada waktu di mana Meteor mengandalkan manajer paket eksternal yang disebut Meteorite . Sejak Meteor versi 0.9.0 , Meteorite tidak diperlukan lagi karena fitur-fiturnya telah berasimilasi Meteor itu sendiri .
 
-- Meteor itu sendiri terpecah menjadi **core packages** yang berbeda. Mereka termasuk ke dalam setiap aplikasi Meteor, dan tidak ada yang perlu Anda khawatirkan soal ini.
-- **Smart packages** Meteor adalah kumpulan dari [kurang lebih 37 paket](http://docs.meteor.com/#packages) (Anda bisa mendapatkan daftar lengkapnya dengan mengetik `meteor list`) yang terbundel dengan Meteor dan bisa Anda *import* ke dalam aplikasi Anda. Anda tetap bisa menggunakannya walaupun Anda tidak menggunakan Meteorite, dengan `meteor add packagename`.
-- **Paket lokal** adalah paket opsional yang bisa anda buat sendiri dan menyimpannya di folder `/packages`. Anda juga tidak perlu Meteorite untuk menggunakannya.
-- **Atmosphere smart packages** adalah paket Meteor dari pihak ketiga yang terdaftar di [Atmosphere](http://atmosphere.meteor.com). Meteorite dibutuhkan untuk mengambil dan menghubungkan mereka ke aplikasi Anda.
-- **NPM packages** (*Node Packaged Modules*) adalah paket Node.js. Walaupun mereka tidak bekerja seperti Meteor, mereka tetap bisa digunakan oleh tipe-tipe paket sebelumnya.
+Jadi, jika Anda menemukan referensi untuk Meteorite `mrt` utilitas baris perintah dalam buku ini atau saat browsing materi Meteor terkait , Anda dapat dengan aman menggantinya dengan menggunakan ` meteor` .
 
 <% end %>
 
-### Struktur Folder Aplikasi Meteor
+### Menambahkan Paket
 
-Sebelum kita memulai menulis kode, kita harus membuat projek kita dengan benar. Untuk memastikan kita memiliki aplikasi yang bersih, buka `microscope` folder dan hapus `microscope.html`, `microscope.js`, dan `microscope.css`.
+We will now use Meteor's package system to add the [Bootstrap](http://getbootstrap.com/) framework to our project.
 
-Selanjutnya, buat lima root folder di dalam `/microscope`: `/client`, `/server`, `/public`, `/lib`, and `/collections`, dan kita juga akan membuat berkas `main.html` dan `main.js` di dalam `/client`. Jangan khawatir jika hal ini akan merusak aplikasi untuk sekarang, kita akan mulai mengisi berkas-berkas ini di bab selanjutnya.
+Sekarang kita akan menggunakan sistem paket Meteor untuk menambahkan [ Bootstrap ] ( http://getbootstrap.com/ ) kerangka untuk proyek kami.
 
-Kita harus ingat bahwa beberapa dari folder ini adalah spesial. Ketika kita sampai di berkas-berkas, Meteor memiliki beberapa peraturan:
+Ini tidak berbeda dari menambahkan Bootstrap cara yang biasa secara manual termasuk CSS dan JavaScript file, melainkan bahwa kita bergantung pada anggota komunitas Meteor [Andrew Mao](https://github.com/mizzao) ("mizzao" di `mizzao:bootstrap-3` adalah paket username) untuk menjaga semuanya up to date untuk kita.
 
-- Kode di folder `/server` hanya jalan di *server*.
-- Kode di folder `/client` hanya jalan di *client*.
-- Selebihnya jalan di *server* dan *client*.
-- Berkas-berkas di `/lib` akan di jalankan sebelum berkas-berkas lainnya.
-- Semua berkas `main.*` akan diambil sebelum yang lainnnya.
-- Berkas statik (*fonts*, gambar, dan lainnya) disimpan di folder `/public`.
+Sementara itu , kami juga akan menambahkan paket [Underscore] (http://underscorejs.org/). Underscore adalah perpustakaan utilitas JavaScript, dan itu sangat berguna untuk memanipulasi struktur data JavaScript.
 
-Perlu dicatat bahwa walaupun Meteor memiliki semua peraturan ini, ini tidak melarang Anda untuk menggunakan struktur aplikasi yang berbeda jika Anda tidak menginginkannya. Jadi, struktur yang kami sarankan hanya merupakan cara bagaimana kami melakukannya, bukan peraturan baku.
+Pada tulisan ini, paket `underscore` masih merupakan bagian dari “official” paket Meteor, yang mengapa itu tidak memiliki seorang penulis :
 
-Kami menyarankan Anda untuk melihat [dokumentasi resmi Meteor](http://docs.meteor.com/#structuringyourapp) jika Anda ingin lebih jelas tentan gini.
+~~~bash
+meteor add mizzao:bootstrap-3
+meteor add underscore
+~~~
+
+Perhatikan bahwa kita menambahkan Bootstrap **3** . Beberapa screenshot dalam buku ini diambil dengan versi lama dari Mikroskop menjalankan Bootstrap **2** , yang berarti mereka mungkin terlihat sedikit berbeda .
+
+<%= commit "2-2", "Added bootstrap and underscore packages." %>
+
+Segera setelah Anda telah menambahkan paket Bootstrap Anda akan melihat perubahan dalam aplikasi *bare-bones* kami:
+
+<%= screenshot "2-1b", "With Bootstrap." %>
+
+Berbeda dengan cara "tradisional" termasuk aset eksternal, kita tidak harus menghubungkan setiap CSS atau file JavaScript, karena Meteor menangani semua itu bagi kita! Itu hanya salah satu dari banyak keuntungan dari paket Meteor.
 
 <% note do %>
 
-### Apakah Meteor Bersifat MVC?
+### Sebuah Catatan pada Paket - Paket
+
+Ketika kita berbicara tentang paket di dalam hal Meteor, sebaiknya harus spesifik. Meteor memiliki lima tipe paket sederhana:
+
+- Inti Meteor sendiri terpecah menjadi **Meteor platform packages** yang berbeda. Mereka sudah ada pada setiap aplikasi Meteor, dan Anda tidak perlu memusingkannya.
+- Paket Meteor yang reguler biasa disebut “**isopacks**”, atau paket isomorphic (artinya paket tersebut bisa jalan baik pada klien dan server). **First-party packages** seperi `accounts-ui` atau `appcache` dikelola oleh tim inti Meteor dan [come bundled with Meteor](http://docs.meteor.com/#packages).
+- **Third-party packages** adalah isopacks yang dikembangkan oleh pengguna-pengguna Meteor yang telah diunggah ke server paket Meteor. Anda bisa melihatnya di [Atmosphere](http://atmosphere.meteor.com) atau dengan perintah `meteor search`.
+- **Local packages** adalah paket kustomisasi yang bisa anda buat sendiri dan menyimpannya di direktori `/packages`.
+- **NPM packages** (*Node.js Packaged Modules*) adalah paket Node.js. Walaupun mereka tidak bekerja seperti Meteor, mereka tetap bisa digunakan oleh tipe-tipe paket sebelumnya.
+
+<% end %>
+
+### Struktur File Aplikasi Meteor
+
+Sebelum kita memulai menulis kode, kita harus mempersiapkan projek kita dengan benar. Untuk memastikan kita membuat aplikasi dengan benar, buka direktori `microscope` dan hapus `microscope.html`, `microscope.js`, dan `microscope.css`.
+
+Selanjutnya, buat empat root folder di dalam `/microscope`: `/client`, `/server`, `/public`, dan `/lib`.
+
+Lalu, Kita juga membuat file kosong `main.html` dan `main.js` di dalam `/client`. Jangan kawatir jika perubahan ini membuat aplikasi tidak jalan sekarang, kita akan mulai mengisi file tersebut di bab berikutnya.
+
+Kita harus ingat bahwa beberapa dari direktori dibawah ini spesial. Pada saat kita menjalankan kode/aplikasi, Meteor memiliki beberapa peraturan:
+
+- Kode di folder `/server` hanya jalan di server.
+- Kode di folder `/client` hanya jalan di klien.
+- Selebihnya jalan di *server* dan *client*.
+- Berkas-berkas di `/lib` akan di jalankan sebelum berkas-berkas lainnya.
+- Semua berkas `main.*` akan diambil sebelum yang lainnnya.
+- Aset - aset statis Anda (font-font, gambar-gambar, dan lainnya) disimpan di direktori `/public`.
+
+Dan juga penting untuk mengetahui bagaimana Meteor memutuskan urutan file - file ynag dijalankan:
+
+- File - file di `/lib` dijalankan *sebelum* yang lain.
+- Semau file yang `main.*` dijalankan *setelah* semua file yang lain dijalankan.
+- Semuanya file dijalankan diurutkan berdasarkan nama filenya secara alpabetis.
+
+Walaupun Meteor mempunyai aturan ini, bukan berarti Meteor memaksa Anda harus mengikutu struktur file tersebut dalam aplikasi jika Anda tidak menginginkan. Jadi strukture yang kami sarankan hanya sebagai panduan saja, bukan hal yang baku.
+
+Kami menyarankan Anda untuk mengecek [official Meteor docs](http://docs.meteor.com/#structuringyourapp) jika Anda ingin mengetahui lebih detil lagi.
+
+<% note do %>
+
+### Apakah Meteor MVC?
 
 Jika sebelum menggunakan Meteor Anda pernah menggunakan *framework* lain seperti Ruby on Rails, Anda mungkin bertanya apakah aplikasi Meteor mengadopsi pola MVC (*Model View Controller*).
 
@@ -169,7 +164,7 @@ Ngomong-ngomong, Anda mungkin juga menyadari adanya folder tersembunyi `.meteor`
 
 <% note do %>
 
-### *Underscores* vs *CamelCase*
+### Underscores vs CamelCase
 
 Satu-satunya yang akan kami katakan tentang perdebatan sengit antara *underscore* (`my_variable`) vs *camelCase* (`myVariable`) adalah bahwa itu tidak jadi masalah yang manapun yang akan Anda ambil selama itu cocok untuk Anda.
 
@@ -179,111 +174,180 @@ Satu-satunya pengecualian untuk ini adalah penamaan berkas, yang akan menggunaka
 
 <% end %>
 
-### Mengambil Alih CSS
+### Mengurus CSS
 
 Buku ini bukan tentang CSS. Jadi, untuk menghindari pelambatan Anda dengan detail *styling*, kami memutuskan untuk membuat semua *stylesheet* tersedia dari awal, sehingga Anda tidak perlu khawatir soal itu lagi selamanya.
 
-CSS secara otomatis dimuat dan di *minified* oleh Meteor, jadi tidak seperti berkas statik lainnya, berkas css disimpan di `/client`, dan bukan di `/public`. Mulailah membuat folder `client/stylesheets/` sekarang, dan buat berkas `style.css` di dalamnya.
+CSS secara otomatis dimuat dan di *minified* oleh Meteor, jadi tidak seperti berkas statik lainnya, berkas css disimpan di `/client`, dan bukan di `/public`. Mulailah membuat folder `client/stylesheets/` sekarang, dan buat berkas `style.css` di dalamnya:
 
 ~~~css
 .grid-block, .main, .post, .comments li, .comment-form {
-    background: #fff;
-    border-radius: 3px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-}
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
+
 body {
-    background: #eee;
-    color: #666666;
-}
-.navbar { margin-bottom: 10px }
-.navbar .navbar-inner {
-    border-radius: 0px 0px 3px 3px;
-}
-#spinner { height: 300px }
+  background: #eee;
+  color: #666666; }
+
+.navbar {
+  margin-bottom: 10px; }
+  /* line 32, ../sass/style.scss */
+  .navbar .navbar-inner {
+    -webkit-border-radius: 0px 0px 3px 3px;
+    -moz-border-radius: 0px 0px 3px 3px;
+    -ms-border-radius: 0px 0px 3px 3px;
+    -o-border-radius: 0px 0px 3px 3px;
+    border-radius: 0px 0px 3px 3px; }
+
+#spinner {
+  height: 300px; }
+
 .post {
-    *zoom: 1;
-    -webkit-transition: all 300ms 0ms;
-    -webkit-transition-delay: ease-in;
+  /* For modern browsers */
+  /* For IE 6/7 (trigger hasLayout) */
+  *zoom: 1;
+  position: relative;
+  opacity: 1; }
+  .post:before, .post:after {
+    content: "";
+    display: table; }
+  .post:after {
+    clear: both; }
+  .post.invisible {
+    opacity: 0; }
+  .post.instant {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none; }
+  .post.animate{
+    -webkit-transition: all 300ms 0ms ease-in;
     -moz-transition: all 300ms 0ms ease-in;
     -o-transition: all 300ms 0ms ease-in;
-    transition: all 300ms 0ms ease-in;
-    position: relative;
-    opacity: 1;
-}
-.post:before, .post:after {
-    content: "";
-    display: table;
-}
-.post:after { clear: both }
-.post.invisible { opacity: 0 }
-.post .upvote {
+    transition: all 300ms 0ms ease-in; }
+  .post .upvote {
     display: block;
     margin: 7px 12px 0 0;
-    float: left;
-}
-.post .post-content { float: left }
-.post .post-content h3 {
-    margin: 0;
-    line-height: 1.4;
-    font-size: 18px;
-}
-.post .post-content h3 a {
-    display: inline-block;
-    margin-right: 5px;
-}
-.post .post-content h3 span {
-    font-weight: normal;
-    font-size: 14px;
-    display: inline-block;
-    color: #aaaaaa;
-}
-.post .post-content p { margin: 0 }
-.post .discuss {
+    float: left; }
+  .post .post-content {
+    float: left; }
+    .post .post-content h3 {
+      margin: 0;
+      line-height: 1.4;
+      font-size: 18px; }
+      .post .post-content h3 a {
+        display: inline-block;
+        margin-right: 5px; }
+      .post .post-content h3 span {
+        font-weight: normal;
+        font-size: 14px;
+        display: inline-block;
+        color: #aaaaaa; }
+    .post .post-content p {
+      margin: 0; }
+  .post .discuss {
     display: block;
     float: right;
-    margin-top: 7px;
-}
+    margin-top: 7px; }
+
 .comments {
-    list-style-type: none;
-    margin: 0;
-}
-.comments li h4 {
+  list-style-type: none;
+  margin: 0; }
+  .comments li h4 {
     font-size: 16px;
-    margin: 0;
-}
-.comments li h4 .date {
-    font-size: 12px;
-    font-weight: normal;
-}
-.comments li h4 a { font-size: 12px }
-.comments li p:last-child { margin-bottom: 0 }
+    margin: 0; }
+    .comments li h4 .date {
+      font-size: 12px;
+      font-weight: normal; }
+    .comments li h4 a {
+      font-size: 12px; }
+  .comments li p:last-child {
+    margin-bottom: 0; }
+
 .dropdown-menu span {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    line-height: 20px;
-    color: #bbb;
-    white-space: nowrap;
-}
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  line-height: 20px;
+  color: #bbb;
+  white-space: nowrap; }
+
 .load-more {
-    display: block;
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0.05);
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
-    margin-bottom: 10px;
-}
-.load-more:hover {
+  display: block;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 10px; }
+  .load-more:hover {
     text-decoration: none;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1); }
+
+.posts .spinner-container{
+  position: relative;
+  height: 100px;
+}
+
+.jumbotron{
+  text-align: center;
+}
+.jumbotron h2{
+  font-size: 60px;
+  font-weight: 100;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.errors{
+  position: fixed;
+  z-index: 10000;
+  padding: 10px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+}
+.alert {
+          animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  width: 250px;
+  float: right;
+  clear: both;
+  margin-bottom: 5px;
+  pointer-events: auto;
 }
 ~~~
 <%= caption "client/stylesheets/style.css" %>
 
-<%= commit "2-3","Atur ulang struktur berkas berkas." %>
+<%= commit "2-3","Re-arranged file structure." %>
 
 <% note do %>
 
@@ -291,6 +355,6 @@ body {
 
 Di dalam buku ini, kami menuliskannya dengan bahasa JavaScript. Tapi, jika Anda lebih suka menggunakan CoffeeScript, Meteor sudah mempersiapkannya untuk Anda. Cukup tambahkan paket CoffeeScript dan Anda siap melanjutkannya.
 
-`mrt add coffeescript`
+`meteor add coffeescript`
 
 <% end %>
