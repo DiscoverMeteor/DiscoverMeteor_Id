@@ -1,9 +1,12 @@
 ---
-title: Templat
+title: Template
 slug: templates
 date: 0003/01/01
 number: 3
-contents: Mempelajari Handlebars, bahasa templat Meteor.|Membuat tiga templat pertama.|Mempelajari bagaimana manajer Meteor bekerja.|Memahami kerja prototipe dasar dengan data statis.
+points: 1
+photoUrl: http://www.flickr.com/photos/73449134@N04/8194499092/
+photoAuthor: Mike Lewinski
+contents: Belajar tentang bahasa templating Meteor, Spacebars.|Membuat tiga template pertama Anda.|Belajar bagaimana cara kerja majemen Meteor.|Menjalankan prototipe dasar dengan data statis.
 paragraphs: 46
 ---
 
@@ -19,9 +22,9 @@ Mari membuat berkas baru dengan nama `main.html` di dalam `/client`, dan mengisi
 </head>
 <body>
   <div class="container">
-    <header class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="/">Microscope</a>
+    <header class="navbar navbar-default" role="navigation"> 
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Microscope</a>
       </div>
     </header>
     <div id="main" class="row-fluid">
@@ -32,13 +35,16 @@ Mari membuat berkas baru dengan nama `main.html` di dalam `/client`, dan mengisi
 ~~~
 <%= caption "client/main.html" %>
 
-Ini akan menjadi templat utama aplikasi kita. Seperti yang kamu lihat, semuanya HTML kecuali tag `{{> postsList}}`, yang merupakan sisipan untuk `postsList`, templat berikutnya. Mari kita buat beberapa templat lagi.
+Ini akan menjadi template utama aplikasi kita. Seperti yang kamu lihat, semuanya HTML kecuali tag `{{> postsList}}`, yang merupakan sisipan untuk `postsList`, template berikutnya. Mari kita buat beberapa template lagi.
 
-### Templat Meteor
+### Template Meteor
 
-Pada intinya, situs berita sosial terdiri dari lansiran yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur templat kita.
+Pada intinya, situs berita sosial terdiri dari lansiran yang terorganisir dalam daftar, dan seperti itu pula kita akan mengatur template kita.
 
-Mari bikin direktori `/views` di dalam `/client`. Ini akan menjadi pusat penyimpanan seluruh templat kita dan untuk menjaga tetap ringkas, kita juga akan membuat direktori `/post` dalam `/views` sekedar untuk templat-templat yg berkaitan dengan lansiran.
+Mari membuat direktori `/templates` didalam `/client`. Direktori ini adalah tempat template-template kita, dan agar tertata rapi kita juga akan membuat `/posts` didalam `/templates` untuk template-template yang berhubungan dengan postingan.
+
+
+=== break ===
 
 <% note do %>
 
