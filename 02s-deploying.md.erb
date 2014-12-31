@@ -3,7 +3,10 @@ title: Pemasangan
 slug: deploying
 date: 0002/01/02
 number: 2.5
+points: 1
 sidebar: true
+photoUrl: http://www.flickr.com/photos/monomaniacgarage/10703829133/
+photoAuthor: Monomaniacgarage
 contents: Mempelajari cara pemasangan di Meteor.com|Mempelajari cara pemasangan di Modulus.|Mempelajari cara pemasangan di server Anda sendiri menggunakan Meteor Up.
 paragraphs: 46
 ---
@@ -24,19 +27,21 @@ Jadi, jika Anda lebih suka langsung ke pemasangan Microscope, Anda dengan bebas 
 
 <% end %>
 
-### Pemasangan Dengan Meteor
+### Pemasangan Di Meteor
 
 Pemasangan di *subdomain* Meteor (cth. `http://myapp.meteor.com`) adalah opsi yang paling mudah, dan yang paling pertama yang akan kita coba. Cara ini bisa berguna untuk menunjukkan aplikasi Anda kepada orang lain lebih awal, atau membangun *server* percobaan dengan cepat.
 
 Pemasangan di Meteor cukup mudah. Buka *terminal*, dan arahkan ke folder aplikasi Meteor Anda, dan ketik:
 
 ~~~bash
-$ meteor deploy myapp.meteor.com
+meteor deploy myapp.meteor.com
 ~~~
 
-Tentu saja, Anda harus mengganti "myapp" dengan nama pilihan Anda, lebih diutamakan dengan nama yang belum digunakan. Jika ini adalah kali pertama Anda memasang aplikasi, Anda akan ditanyakan untuk membuat akun Meteor. Dan jika semuanya berjalan dengan lancar, Anda sudah bisa langsung mengakses aplikasi Anda di `http://myapp.meteor.com`.
+Tentu saja, Anda harus mengganti "myapp" dengan nama pilihan Anda, lebih diutamakan dengan nama yang belum digunakan. 
 
-Anda bisa mengacu ke [dokumentasi resi](http://docs.meteor.com/#deploying) untuk informasi lebih lanjut tentang hal-hal seperti mengakses basis data secara langsung, atau untuk konfigurasi domain untuk aplikasi Anda.
+Jika ini adalah kali pertama Anda memasang aplikasi, Anda akan ditanyakan untuk membuat akun Meteor. Dan jika semuanya berjalan dengan lancar, Anda sudah bisa langsung mengakses aplikasi Anda di `http://myapp.meteor.com`.
+
+Anda bisa mengacu ke [[the official documentation](http://docs.meteor.com/#deploying) untuk informasi lebih lanjut tentang hal-hal seperti mengakses basis data secara langsung, atau untuk konfigurasi domain untuk aplikasi Anda.
 
 ### Pemasangan Di Modulus
 
@@ -46,40 +51,40 @@ Anda bisa mengacu ke [dokumentasi resi](http://docs.meteor.com/#deploying) untuk
 
 ### Demeteorizer
 
-Modulus membuat alat dengan lisensi *open-source* yang disebut [demeteorizer](https://github.com/onmodulus/demeteorizer) yang akan mengubah aplikasi Meteor Anda menjadi aplikasi standar NodeJS.
+Modulus membuat alat dengan lisensi *open-source* yang disebut [demeteorizer](https://github.com/onmodulus/demeteorizer) yang akan mengubah aplikasi Meteor Anda menjadi aplikasi standar Node.js.
 
 <% end %>
 
-Mulai dengan [membuat akun](https://modulus.io/register). Untuk mengembangkan aplikasi di Modulus, kita perlu memasang aplikasi Modulus:
+Mulai dengan [creating an account](https://modulus.io/register). Untuk mengembangkan aplikasi di Modulus, kita perlu memasang aplikasi Modulus:
 
 ~~~bash
-$ npm install -g modulus
+npm install -g modulus
 ~~~
 
-Dan log masuk dengan:
+Lalu login dengan:
 
 ~~~bash
-$ modulus login
+modulus login
 ~~~
 
 Kita akan membuat projek Modulus (catatan bahwa Anda juga bisa melakukan ini melalui halaman depan situs Modulus):
 
 ~~~bash
-$ modulus project create
+modulus project create
 ~~~
 
-Langkah selanjutnya adalah membuat basis data MongoDB untuk aplikasi Anda. Kita bisa membuat basis data MongoDB dengan [Modulus itu sendiri](https://modulus.io/codex/database/getting_started), [MongoHQ](https://www.mongohq.com/) atau dengan penyedia *cloud MongoDB* lainnya.
+Langkah selanjutnya adalah membuat basis data MongoDB untuk aplikasi Anda. Kita bisa membuat basis data MongoDB dengan [Modulus itself](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus), [Compose](https://www.compose.io/) atau dengan penyedia *cloud MongoDB* lainnya.
 
-Begitu kita selesai membuat basis data MongoDB, kita bisa mendapatkan `MONGO_URL` untuk basis data dari antarmuka situs Modulus (Arahkan ke Dashboard > Databases > Pilih basis data Anda > Administration), dan gunakan informasi itu untuk mengkonfigurasi aplikasi kita dengan cara:
+Begitu kita selesai membuat basis data MongoDB, kita bisa mendapatkan `MONGO_URL` untuk basis data dari antarmuka situs Modulus (Arahkan ke Dashboard > Databases > Pilih basis data Anda > Administration), dan gunakan informasi itu untuk mengkonfigurasi aplikasi kita seperti ini:
 
 ~~~bash
-$ modulus env set MONGO_URL "mongodb://<user>:<pass>@mongo.onmodulus.net:27017/<database_name>"
+modulus env set MONGO_URL "mongodb://<user>:<pass>@mongo.onmodulus.net:27017/<database_name>"
 ~~~
 
 Inilah waktunya pemasangan aplikasi kita. Dan itu semudah mengetik:
 
 ~~~bash
-$ modulus deploy
+modulus deploy
 ~~~
 
 Sekarang kita sudah berhasil memasang aplikasi kita di Modulus. Lihat [dokumentasi Modulus](https://modulus.io/codex/projects) untuk informasi lebih lanjut tentang cara mengakses log, instalasi *custom domain*, dan SSL.
@@ -99,7 +104,7 @@ Layanan yang mana pun yang akan Anda pilih, Anda harus memperhatikan tiga hal: a
 Untuk memulai, kita perlu memasang Meteor Up melalui `npm` sebagai berikut:
 
 ~~~bash
-$ npm install -g mup
+npm install -g mup
 ~~~
 
 Kita selanjutnya membuat folder spesial yang terpisah yang akan menyimpan pengaturan Meteor Up untuk kebutuhan pemasangan. Kita menggunakan folder yang terpisah karena dua alasan: pertama, selalu akan lebih baik menghindari hal-hal yang bersifat pribadi dari *Git repo* Anda, terutama jika Anda bekerja di basis kode umum.
@@ -109,9 +114,9 @@ Kedua, dengan menggunakan beberapa folder yang terpisah, kita bisa memenej beber
 Jadi ayo buat folder ini dan gunakan untuk memulai projek aplikasi Meteor Up yang baru.
 
 ~~~bash
-$ mkdir ~/microscope-deploy
-$ cd ~/microscope-deploy
-$ mup init
+mkdir ~/microscope-deploy
+cd ~/microscope-deploy
+mup init
 ~~~
 
 <% note do %>
@@ -182,13 +187,13 @@ Anda bisa menentukan semua variabel *environment* (seperti `ROOT_URL`, `MAIL_URL
 Sebelum kita bisa memasangnya, kita perlu membangun *server* agar dia siap meng-*host* aplikasi Meteor. Dengan ajaib Meteor Up menangani proses kompleks ini dengan sebuah perintah!
 
 ~~~bash
-$ mup setup
+mup setup
 ~~~
 
 Hal ini akan memakan beberapa menit bergantung pada performa *server* dan koneksi jaringan. Begitu selesai membangun, kita kemudian bisa memasang aplikasi kita dengan:
 
 ~~~bash
-$ mup deploy
+mup deploy
 ~~~
 
 Hal ini akan mem-*bundle* aplikasi meteor, dan memasang *server* yang baru saja kita bangun.
@@ -198,7 +203,7 @@ Hal ini akan mem-*bundle* aplikasi meteor, dan memasang *server* yang baru saja 
 Logs sangat penting dan Meteor Up menyediakan cara yang sangat mudah untuk menanganinya dengan meniru perintah `tail -f`. Cukup ketik:
 
 ~~~bash
-$ mup logs -f
+mup logs -f
 ~~~
 
 Hal ini mencakup sudut pandang kita tentang apa yang bisa dilakukan oleh Meteor Up. Untuk informasi lebih lanjut, kami menyarankan untuk mengunjungi [Repository GitHub Meteor Up](https://github.com/arunoda/meteor-up).
